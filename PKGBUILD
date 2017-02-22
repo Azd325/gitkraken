@@ -4,7 +4,7 @@
 # Contributor: KillWolfVlad <github.com/KillWolfVlad>
 
 pkgname=gitkraken-pro
-pkgrel=2
+pkgrel=3
 pkgver=2.1.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client [Pro Version]."
 url="http://www.gitkraken.com/"
