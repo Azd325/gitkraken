@@ -1,17 +1,20 @@
 # Maintainer: Tim Kleinschmidt <tim.kleinschmidt@gmail.com>
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Jean-Pier Brochu <jeanpier.brochu@gmail.com>
+# Contributor: KillWolfVlad <github.com/KillWolfVlad>
 
-pkgname=gitkraken
+pkgname=gitkraken-pro
 pkgrel=2
 pkgver=2.1.0
-pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
+pkgdesc="The intuitive, fast, and beautiful cross-platform Git client [Pro Version]."
 url="http://www.gitkraken.com/"
-provides=('gitkraken')
+provides=('gitkraken-pro')
+conflicts=('gitkraken')
+replaces=('gitkraken')
 arch=('x86_64')
 license=('custom')
 depends=('gtk2' 'nss' 'libnotify' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-compat')
-makedepends=()
+makedepends=('git' 'nodejs>=7.6.0')
 backup=()
 install=''
 source=(
@@ -26,6 +29,15 @@ md5sums=('075de0a5610f6dc488563fe769d731c6'
          'e9ba6663e5f1f92cae31beb0074e8c6c')
 
 package() {
+    cd "$srcdir"
+    git clone https://github.com/KillWolfVlad/GitCracken.git
+    cd GitCracken
+    git checkout v0.1.0
+    npm i
+    node ./bin/gitcracken.js -p -d "$srcdir"/gitkraken/resources/
+    rm "$srcdir"/gitkraken/resources/app.asar.*.backup
+    cd "$srcdir"
+
     install -d "$pkgdir"/opt
     cp -R "$srcdir"/gitkraken "$pkgdir"/opt/gitkraken
 
