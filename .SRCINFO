@@ -1,12 +1,13 @@
+pkgbase = gitkraken-pro
+	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client [Pro Version].
 	pkgver = 2.2.0
 	pkgrel = 1
-	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client [Pro Version].
 	url = http://www.gitkraken.com/
 	arch = x86_64
 	license = custom
-	makedepends = nodejs>=7.7.1
-	makedepends = npm>=4.3.0
-	makedepends = mono>=4.6.1.3
+	makedepends = nodejs>=7.7.2
+	makedepends = npm>=4.4.1
+	makedepends = mono>=4.8.0
 	depends = gtk2
 	depends = nss
 	depends = libnotify
@@ -23,13 +24,13 @@
 	source = gitkraken.png
 	source = eula.html
 	source = https://github.com/KillWolfVlad/b2t/releases/download/v0.0.0-alpha/b2t.tar.xz
-	source = http://pastebin.com/raw/SXMzQCrm
+	source = http://pastebin.com/raw/mvEyx6EC
 	md5sums = 60ef26ca66f7d73ae29e53b557b69350
 	md5sums = ecef298bed1178d60cf0dd75c4700205
 	md5sums = 04987b933d551d15c0813111d715bb9e
 	md5sums = e9ba6663e5f1f92cae31beb0074e8c6c
 	md5sums = 85a40827cffdcddc04115ab177c94448
-	md5sums = 352ee968f87c276eb844657a532e81c0
+	md5sums = 94c01aa1af2186fb0a9a1b15e33ed843
 
 pkgname = gitkraken-pro
 
