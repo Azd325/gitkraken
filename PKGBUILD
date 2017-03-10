@@ -4,12 +4,12 @@
 # Contributor: KillWolfVlad <github.com/KillWolfVlad>
 
 pkgname=gitkraken-pro
-pkgrel=5
-pkgver=2.1.0
+pkgrel=1
+pkgver=2.2.0
 gitcrackenver=0.1.2
 b2tver=0.0.0-alpha
-pastebinurl=SXMzQCrm
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client [Pro Version]."
+pastebinurl=SXMzQCrm
 url="http://www.gitkraken.com/"
 provides=('gitkraken-pro')
 conflicts=('gitkraken')
@@ -28,7 +28,7 @@ source=(
     "https://github.com/KillWolfVlad/b2t/releases/download/v${b2tver}/b2t.tar.xz"
     "http://pastebin.com/raw/${pastebinurl}"
 )
-md5sums=('075de0a5610f6dc488563fe769d731c6'
+md5sums=('60ef26ca66f7d73ae29e53b557b69350'
          'ecef298bed1178d60cf0dd75c4700205'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c'
