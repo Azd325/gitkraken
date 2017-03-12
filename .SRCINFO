@@ -1,7 +1,7 @@
 pkgbase = gitkraken-pro
 	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client [Pro Version].
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gitkraken.com/
 	arch = x86_64
 	license = custom
@@ -23,12 +23,14 @@ pkgbase = gitkraken-pro
 	source = GitKraken.desktop
 	source = gitkraken.png
 	source = eula.html
+	source = gitkraken.sh
 	source = https://github.com/KillWolfVlad/b2t/releases/download/v0.0.0-alpha/b2t.tar.xz
 	source = http://pastebin.com/raw/mvEyx6EC
 	md5sums = 60ef26ca66f7d73ae29e53b557b69350
-	md5sums = ecef298bed1178d60cf0dd75c4700205
+	md5sums = 55f11789f5a9ee9fc4989d0f06eee260
 	md5sums = 04987b933d551d15c0813111d715bb9e
 	md5sums = e9ba6663e5f1f92cae31beb0074e8c6c
+	md5sums = e3063947b063aaccf4dc17ed47437ea8
 	md5sums = 85a40827cffdcddc04115ab177c94448
 	md5sums = 94c01aa1af2186fb0a9a1b15e33ed843
 
