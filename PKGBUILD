@@ -4,14 +4,14 @@
 # Contributor: Samuel Littley <samuel@samuellittley.me>
 
 pkgname=gitkraken
-pkgrel=2
-pkgver=2.2.0
+pkgrel=1
+pkgver=2.2.1
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="http://www.gitkraken.com/"
 provides=('gitkraken')
 arch=('x86_64')
 license=('custom')
-depends=('gtk2' 'nss' 'libnotify' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-compat')
+depends=('gtk2' 'nss' 'libnotify' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-compat' 'libxss')
 makedepends=()
 backup=()
 install=''
@@ -22,7 +22,7 @@ source=(
     "eula.html"
     "gitkraken.sh"
 )
-md5sums=('60ef26ca66f7d73ae29e53b557b69350'
+md5sums=('15d46e624ea6f88e1635d8de3b594f89'
          '55f11789f5a9ee9fc4989d0f06eee260'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c'
