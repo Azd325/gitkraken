@@ -2,7 +2,7 @@
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Jean-Pier Brochu <jeanpier.brochu@gmail.com>
 # Contributor: Samuel Littley <samuel@samuellittley.me>
-# Contributor and Hacker: KillWolfVlad <github.com/KillWolfVlad>
+# Contributor: KillWolfVlad <github.com/KillWolfVlad>
 
 pkgname=gitkraken
 pkgrel=1
