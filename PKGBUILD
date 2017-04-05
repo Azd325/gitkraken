@@ -6,9 +6,9 @@
 
 pkgname=gitkraken-pro
 pkgrel=1
-pkgver=2.2.1
+pkgver=2.3.1
 b2tver=0.0.0-alpha
-pastebinurl=ZhepqYWL
+pastebinurl=176qyaL1
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client [Pro Version]."
 url="http://www.gitkraken.com/"
 provides=('gitkraken-pro')
@@ -29,13 +29,13 @@ source=(
     "https://github.com/KillWolfVlad/b2t/releases/download/v${b2tver}/b2t.tar.xz"
     "http://pastebin.com/raw/${pastebinurl}"
 )
-md5sums=('15d46e624ea6f88e1635d8de3b594f89'
+md5sums=('9565166e4839e8899a87a932261c2d49'
          '55f11789f5a9ee9fc4989d0f06eee260'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c'
          'e3063947b063aaccf4dc17ed47437ea8'
          '85a40827cffdcddc04115ab177c94448'
-         '88f8527d10f0dc1adc66a425cf8f1325')
+         '41036b86067661fa4539c172319f253b')
 
 package() {
     cd "$srcdir"
