@@ -7,8 +7,7 @@
 
 pkgname=gitkraken-pro
 pkgrel=1
-pkgver=2.3.3
-b2tver=0.0.0-alpha
+pkgver=2.4.0
 pastebinurl=176qyaL1
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client [Pro Version]."
 url="http://www.gitkraken.com/"
@@ -18,7 +17,7 @@ replaces=('gitkraken')
 arch=('x86_64')
 license=('custom')
 depends=('gtk2' 'nss' 'libnotify' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-compat')
-makedepends=('nodejs>=7.7.3' 'npm>=4.4.4' 'mono>=4.8.0')
+makedepends=('nodejs>=7.7.3' 'npm>=4.5.0' 'b2t=0.0.0_alpha')
 backup=()
 install=''
 source=(
@@ -27,20 +26,18 @@ source=(
     "gitkraken.png"
     "eula.html"
     "gitkraken.sh"
-    "https://github.com/KillWolfVlad/b2t/releases/download/v${b2tver}/b2t.tar.xz"
     "https://pastebin.com/raw/${pastebinurl}"
 )
-md5sums=('5694fc24d6c0678156baafd815d60b16'
+md5sums=('560d36ce2651aacb2f2296fb6771f05c'
          '55f11789f5a9ee9fc4989d0f06eee260'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c'
          'e3063947b063aaccf4dc17ed47437ea8'
-         '85a40827cffdcddc04115ab177c94448'
          '41036b86067661fa4539c172319f253b')
 
 package() {
     cd "$srcdir"
-    mono ./b2t.exe d "$pastebinurl" -o GitCracken.tar.xz
+    b2t d "$pastebinurl" -o GitCracken.tar.xz
     tar xpvf ./GitCracken.tar.xz
     cd "$srcdir"/GitCracken/
     npm i
