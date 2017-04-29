@@ -1,16 +1,15 @@
 pkgbase = gitkraken-pro
 	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client [Pro Version].
 	pkgver = 2.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gitkraken.com/
 	arch = x86_64
 	license = custom
-	makedepends = nodejs>=7.7.3
+	makedepends = nodejs>=7.9.0
 	makedepends = npm>=4.5.0
 	makedepends = b2t=0.0.0_alpha
 	depends = gtk2
 	depends = nss
-	depends = libnotify
 	depends = libxtst
 	depends = libgnome-keyring
 	depends = gconf
