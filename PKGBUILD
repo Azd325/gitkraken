@@ -6,8 +6,8 @@
 # Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
 
 pkgname=gitkraken-pro
-pkgrel=4
-pkgver=2.4.0
+pkgrel=1
+pkgver=2.5.0
 pastebinurl=176qyaL1
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client [Pro Version]."
 url="http://www.gitkraken.com/"
@@ -17,7 +17,7 @@ replaces=('gitkraken')
 arch=('x86_64')
 license=('custom')
 depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-openssl-1.0' 'libxss')
-makedepends=('nodejs>=7.9.0' 'npm>=4.5.0' 'b2t=0.0.0_alpha')
+makedepends=('nodejs>=7.10.0' 'npm>=4.5.0' 'b2t=0.0.0_alpha')
 backup=()
 install=''
 source=(
@@ -28,7 +28,7 @@ source=(
     "gitkraken.sh"
     "https://pastebin.com/raw/${pastebinurl}"
 )
-md5sums=('560d36ce2651aacb2f2296fb6771f05c'
+md5sums=('a6dcbb4979b10ea7a865ffa742de8fa2'
          '55f11789f5a9ee9fc4989d0f06eee260'
          '04987b933d551d15c0813111d715bb9e'
          'e9ba6663e5f1f92cae31beb0074e8c6c'
