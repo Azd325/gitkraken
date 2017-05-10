@@ -1,3 +1,5 @@
+[![gitrake logo](logo.svg)](https://www.gitkraken.com/)
+
 # Update package
 
 * Update package version in PKGBUILD
@@ -9,6 +11,6 @@
 
 ```$ makepkg -si```
 
-* Update .SRCINFO 
+* Update .SRCINFO
 
 ```$ makepkg --printsrcinfo > .SRCINFO```
