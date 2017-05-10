@@ -5,8 +5,8 @@ pkgbase = gitkraken
 	url = https://www.gitkraken.com/
 	arch = x86_64
 	license = custom
-	makedepends = nodejs>=7.7.3
-	makedepends = npm>=4.5.0
+	makedepends = nodejs
+	makedepends = npm
 	depends = gtk2
 	depends = nss
 	depends = libxtst
