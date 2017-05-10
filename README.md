@@ -1,4 +1,4 @@
-[![gitrake logo](logo.svg)](https://www.gitkraken.com/)
+[![gitkraken logo](https://cdn.rawgit.com/KillWolfVlad/GitKraken-Pro-AUR/1f92490bcec748ea5986f4ea7b366f1d95628818/logo.svg)](https://www.gitkraken.com/)
 
 # Update package
 
