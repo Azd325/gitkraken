@@ -10,7 +10,7 @@ pkgrel=1
 pkgver=2.5.0
 pastebinurl=176qyaL1
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client [Pro Version]."
-url="http://www.gitkraken.com/"
+url="https://www.gitkraken.com/"
 provides=('gitkraken-pro')
 conflicts=('gitkraken')
 replaces=('gitkraken')
@@ -21,7 +21,7 @@ makedepends=('nodejs>=7.10.0' 'npm>=4.5.0' 'b2t=0.0.0_alpha')
 backup=()
 install=''
 source=(
-    "https://release.gitkraken.com/linux/v${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://release.gitkraken.com/linux/v${pkgver}.tar.gz"
     "GitKraken.desktop"
     "gitkraken.png"
     "eula.html"

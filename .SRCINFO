@@ -2,7 +2,7 @@ pkgbase = gitkraken-pro
 	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client [Pro Version].
 	pkgver = 2.5.0
 	pkgrel = 1
-	url = http://www.gitkraken.com/
+	url = https://www.gitkraken.com/
 	arch = x86_64
 	license = custom
 	makedepends = nodejs>=7.10.0
@@ -19,7 +19,7 @@ pkgbase = gitkraken-pro
 	provides = gitkraken-pro
 	conflicts = gitkraken
 	replaces = gitkraken
-	source = https://release.gitkraken.com/linux/v2.5.0.tar.gz
+	source = gitkraken-2.5.0.tar.gz::https://release.gitkraken.com/linux/v2.5.0.tar.gz
 	source = GitKraken.desktop
 	source = gitkraken.png
 	source = eula.html
