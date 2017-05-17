@@ -7,6 +7,7 @@ pkgbase = gitkraken
 	license = custom
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = python2
 	depends = gtk2
 	depends = nss
 	depends = libxtst

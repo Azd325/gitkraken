@@ -16,7 +16,7 @@ provides=('gitkraken')
 arch=('x86_64')
 license=('custom')
 depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libxss')
-makedepends=('nodejs' 'npm')
+makedepends=('nodejs' 'npm' 'python2')
 backup=()
 install=''
 source=(
@@ -33,8 +33,7 @@ sha256sums=('46088db46bbad25f0e064ce73cbb1509f924fbf63143744c74c844c5c945713c'
             '06123d2f9cae2d59468c5f92a76bce8c0077fc98a62c3c3f65e842d5de962e6c')
 
 build() {
-    cd "$srcdir"
-    mkdir nodegit && cd "$_"
+    mkdir "$srcdir"/nodegit && cd "$_"
     npm i nodegit@"$nodegitver"
     cd node_modules/nodegit
     HOME=./.electron-gyp node-gyp rebuild --target="$electronver" --arch=x64 --dist-url=https://atom.io/download/electron
