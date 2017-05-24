@@ -6,7 +6,7 @@
 # Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
 
 pkgname=gitkraken
-pkgrel=1
+pkgrel=2
 pkgver=2.6.0
 nodegitver=0.18.3
 electronver=1.2.8
