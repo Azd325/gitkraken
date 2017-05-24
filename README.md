@@ -7,7 +7,7 @@
 1. Download latest `*.deb` package and add new dependencies in `PKGBUILD/depends`
 2. Update package version in `PKGBUILD/pkgver`
 3. Update package release in `PKGBUILD/pkgrel`
-4. Update GitCracken URL in `PKGBUILD/gitcrackenurl`
+4. Update GitCracken version in `PKGBUILD/gitcrackenver`
 5. Update Electron version in `PKGBUILD/electronver`
 6. Update NodeGit version in `PKGBUILD/nodegitver`
 7. Generate new checksums

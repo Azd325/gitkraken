@@ -10,7 +10,7 @@ pkgrel=1
 pkgver=2.6.0
 nodegitver=0.18.3
 electronver=1.2.8
-gitcrackenurl=https://pastebin.com/raw/176qyaL1
+gitcrackenver=176qyaL1
 pkgdesc="The most popular Git GUI for Arch Linux with Pro features."
 url="https://www.gitkraken.com/"
 provides=('gitkraken-pro')
@@ -23,12 +23,12 @@ makedepends=('nodejs' 'npm' 'python2' 'b2t=0.0.0_alpha')
 backup=()
 install=''
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://release.gitkraken.com/linux/v${pkgver}.tar.gz"
+    "gitkraken-${pkgver}.tar.gz::https://release.gitkraken.com/linux/v${pkgver}.tar.gz"
     "GitKraken.desktop"
     "gitkraken.png"
     "eula.html"
     "gitkraken.sh"
-    "GitCracken.tar.xz.txt::${gitcrackenurl}"
+    "GitCracken-${gitcrackenver}.tar.xz.txt::https://pastebin.com/raw/${gitcrackenver}"
 )
 sha256sums=('0e51841e518db6f8ad831eba23caad5355cfa23b8cfe742e53a9283d816bcb9d'
             '5b3294331463f7fd983e78f8f54e293d66150b833db164ee1e4137e038846bc4'
@@ -47,7 +47,7 @@ build() {
 
 package() {
     cd "$srcdir"
-    b2t d GitCracken.tar.xz.txt -o GitCracken.tar.xz
+    b2t d GitCracken-"$gitcrackenver".tar.xz.txt -o GitCracken.tar.xz
     tar xpvf ./GitCracken.tar.xz
     cd "$srcdir"/GitCracken/
     npm i
