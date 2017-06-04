@@ -72,8 +72,6 @@ build() {
 }
 
 package() {
-    cd "$srcdir"
-
     install -d "$pkgdir"/opt
     cp -R "$srcdir"/electron "$pkgdir"/opt/gitkraken
     cp "$srcdir"/app.asar "$pkgdir"/opt/gitkraken/resources/
@@ -83,10 +81,10 @@ package() {
 
     install -d "$pkgdir"/usr/bin
 
-    install -D -m755 "./gitkraken.sh" "${pkgdir}/usr/bin/gitkraken"
-    install -D -m644 "./eula.html" "${pkgdir}/usr/share/licenses/${pkgname}/eula.html"
-    install -D -m644 "./GitKraken.desktop" "${pkgdir}/usr/share/applications/GitKraken.desktop"
-    install -D -m644 "./gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
+    install -D -m755 "${srcdir}/gitkraken.sh" "${pkgdir}/usr/bin/gitkraken"
+    install -D -m644 "${srcdir}/eula.html" "${pkgdir}/usr/share/licenses/${pkgname}/eula.html"
+    install -D -m644 "${srcdir}/GitKraken.desktop" "${pkgdir}/usr/share/applications/GitKraken.desktop"
+    install -D -m644 "${srcdir}/gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
 }
 
 #                              /:/            /::::::\            \:\
