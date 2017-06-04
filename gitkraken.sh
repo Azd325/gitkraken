@@ -1,3 +1,3 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-exec /opt/gitkraken/gitkraken "$@"
+exec /opt/gitkraken/electron /opt/gitkraken/resources/app.asar $@
