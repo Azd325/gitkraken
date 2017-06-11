@@ -7,7 +7,7 @@
 
 _pkgname=gitkraken
 pkgname=${_pkgname}-pro
-pkgrel=2
+pkgrel=3
 pkgver=2.6.0
 _systemidletimever=1.0.4
 _findgitrepositoriesver=0.1.0
@@ -28,7 +28,7 @@ _arch=x64
 arch=('x86_64')
 license=('custom')
 depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libxss')
-makedepends=('nodejs' 'npm' 'python2' 'b2t=0.0.0_alpha')
+makedepends=('nodejs' 'npm' 'python2')
 backup=()
 install=''
 source=(
@@ -51,7 +51,7 @@ sha256sums=('0e51841e518db6f8ad831eba23caad5355cfa23b8cfe742e53a9283d816bcb9d'
 
 prepare() {
     mkdir ./electron && cd $_ && bsdtar zxf ../electron-${_electronver}.zip && cd -
-    b2t d ./GitCracken-${_gitcrackenver}.tar.xz.txt -o ./GitCracken.tar.xz
+    base64 -d ./GitCracken-${_gitcrackenver}.tar.xz.txt > ./GitCracken.tar.xz
     bsdtar xpvf ./GitCracken.tar.xz && cd ./GitCracken && npm i
     node ./bin/gitcracken.js unpack --asar ${srcdir}/gitkraken/resources/app.asar --asar-directory ${srcdir}/app -v
     node ./bin/gitcracken.js patch-directory --asar-directory ${srcdir}/app -v

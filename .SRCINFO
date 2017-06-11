@@ -1,14 +1,13 @@
 pkgbase = gitkraken-pro
 	pkgdesc = The most popular Git GUI for Arch Linux with Pro features.
 	pkgver = 2.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gitkraken.com/
 	arch = x86_64
 	license = custom
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = python2
-	makedepends = b2t=0.0.0_alpha
 	depends = gtk2
 	depends = nss
 	depends = libxtst
