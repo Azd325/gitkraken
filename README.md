@@ -2,41 +2,30 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-by-codebabes.svg)](https://forthebadge.com)
 
-# How I can help update package?
+# About
 
-1. Download latest `*.deb` package and add or remove dependencies in `PKGBUILD/depends`
-2. Update package version in `PKGBUILD/pkgver`
-3. Update package release in `PKGBUILD/pkgrel`
-4. Update `GitCracken` version in `PKGBUILD/_gitcrackenver`
-5. Update `Electron` version in `PKGBUILD/_electronver`
-6. Update [@paulcbetts/system-idle-time](https://www.npmjs.com/package/@paulcbetts/system-idle-time) version in `PKGBUILD/_systemidletimever`
-7. Update [find-git-repositories](https://www.npmjs.com/package/find-git-repositories) version in `PKGBUILD/_findgitrepositoriesver`
-8. Update [keyboard-layout](https://www.npmjs.com/package/keyboard-layout) version in `PKGBUILD/_keyboardlayoutver`
-9. Update [keytar](https://www.npmjs.com/package/keytar) version in `PKGBUILD/_keytarver`
-10. Update [nodegit](https://www.npmjs.com/package/nodegit) version in `PKGBUILD/_nodegitver`
-11. Update [nsfw](https://www.npmjs.com/package/nsfw) version in `PKGBUILD/_nsfwver`
-12. Update [pathwatcher](https://www.npmjs.com/package/pathwatcher) version in `PKGBUILD/_pathwatcherver`
-13. Update [runas](https://www.npmjs.com/package/runas) version in `PKGBUILD/_runasver`
-14. Update [segfault-handler](https://www.npmjs.com/package/segfault-handler) version in `PKGBUILD/_segfaulthandlerver`
-15. Add or remove native `node` modules, that needed to rebuild
-16. Generate new checksums
+`GitKraken Pro` it is project to make GitKraken great again. We love this program, but it does not work the way we want. Also we support various Linux distributions.
 
-```bash
-updpkgsums
-```
+# GitKraken Pro
 
-17. Update `.SRCINFO`
+`gitkraken-pro.sh` it is linux invariant (neutral) script to apply several patches via `GitCracken aka Patcher` and rebuild GitKraken with latest electron version for your platform.
 
-```bash
-makepkg --printsrcinfo > .SRCINFO
-```
+# I love Arch Linux and I use it
 
-18. Try build and install package
+`Arch Linux` it is main platform to support. Just download latest release, extract archive, open your favorite terminal in directory with `PKGBUILD` and type `makepkg -ifs`. Wait... and enjoy!
 
-```bash
-makepkg -ifs
-```
+You can say: "Why I can't find this wonderful script in AUR?". `GitKraken-Pro` was deleted from AUR.
 
-# How I can help with GitCracken aka Patcher?
+# I love Arch Way and I use Manjaro
 
-GitCracken [was deleted](https://github.com/github/dmca/blob/master/2017/2017-02-28-GitKraken.md) from GitHub. But the development continues (in private repo :smile:)! Send [me](https://vk.com/killwolfvlad) your changes. You can find link to the latest version in [releases](https://github.com/KillWolfVlad/GitKraken-Pro-AUR/releases).
+See instruction for `Arch Linux`
+
+# GitCracken aka Patcher
+
+`GitCracken` ([was deleted](https://github.com/github/dmca/blob/master/2017/2017-02-28-GitKraken.md) from GitHub, but the development continues in private repo :smile:) is auto patcher and non-commercial utils for GitKraken. You can use it standalone on your `Linux`, `Windows` or `macOS`. You can find link to the latest version in releases. Download text file and decode it by `base64`. You should get `*.tar.xz` archive. Extract it. Install it globally `npm i -g`. Type `gitcracken -h` to get more usage information.
+
+# How I can help?
+
+1. Open issue
+2. Send PR
+3. Or write me to [vk](https://vk.com/killwolfvlad)
