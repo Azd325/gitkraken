@@ -22,7 +22,7 @@ See instruction for `Arch Linux`
 
 # GitCracken aka Patcher
 
-`GitCracken` ([was deleted](https://github.com/github/dmca/blob/master/2017/2017-02-28-GitKraken.md) from GitHub, but the development continues in private repo :smile:) is auto patcher and non-commercial utils for GitKraken. You can use it standalone on your `Linux`, `Windows` or `macOS`. You can find link to the latest version in releases. Download text file and decode it by `base64`. You should get `*.tar.xz` archive. Extract it. Install it globally `npm i -g`. Type `gitcracken -h` to get more usage information.
+`GitCracken` ([was deleted](https://github.com/github/dmca/blob/master/2017/2017-02-28-GitKraken.md) from GitHub, but the development continues in private repo :smile:) is auto patcher and non-commercial utils for GitKraken. You can use it standalone on your `Linux`, `Windows` or `macOS`. You can find link to the latest version in releases. Download text file and decode it by `base64`. You should get `*.tar.xz` archive. Extract it. Install it globally `sudo npm i -g ./`. Type `gitcracken -h` to get more usage information.
 
 # How I can help?
 
