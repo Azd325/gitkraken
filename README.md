@@ -1,14 +1,22 @@
 [![gitkraken logo](https://cdn.rawgit.com/KillWolfVlad/GitKraken-Pro-AUR/1f92490bcec748ea5986f4ea7b366f1d95628818/logo.svg)](https://www.gitkraken.com/)
 
-[![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-by-codebabes.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
 
 # About
 
-`GitKraken Pro` it is project to make GitKraken great again. We love this program, but it does not work the way we want. Also we support various Linux distributions.
+`GitKraken Pro` is project to make GitKraken great again. We love this program, but it does not work the way we want. Also we support various Linux distributions.
 
-# GitKraken Pro
+# #! GitKraken Pro
 
-`gitkraken-pro.sh` it is linux invariant (neutral) script to apply several patches via `GitCracken aka Patcher` and rebuild GitKraken with latest electron version for your platform.
+`gitkraken-pro.sh` it is linux invariant (neutral) script to apply several patches via `GitCracken aka Patcher` and rebuild GitKraken with working electron version for your platform.
+
+How to use this script?
+
+0. Install develop dependencies (different systems require different dependencies)
+1. Put `gitkraken-pro.sh` and `gitkraken-pro.sha256` to any drectory (better without spaces)
+2. Run `gitkraken-pro.sh` and wait...
+3. You can find your files in `gitkraken-pro-<version>` directory
+4. Execute `electron` file and enjoy!
 
 # I love Arch Linux and I use it
 
@@ -22,7 +30,7 @@ See instruction for `Arch Linux`
 
 # GitCracken aka Patcher
 
-`GitCracken` ([was deleted](https://github.com/github/dmca/blob/master/2017/2017-02-28-GitKraken.md) from GitHub, but the development continues in private repo :smile:) is auto patcher and non-commercial utils for GitKraken. You can use it standalone on your `Linux`, `Windows` or `macOS`. You can find link to the latest version in releases. Download text file and decode it by `base64`. You should get `*.tar.xz` archive. Extract it. Install it globally `sudo npm i -g ./`. Type `gitcracken -h` to get more usage information.
+`GitCracken` ([was deleted](https://github.com/github/dmca/blob/master/2017/2017-02-28-GitKraken.md) from GitHub, but the development continues in private repo :smile:) is auto patcher and non-commercial utils for GitKraken. You can use it standalone on your `Linux`, `Windows` or `macOS`. You can find link to the latest version in releases. Download text file and decode it by `base64`. You should get `*.tar.xz` archive. Extract it. Read `README`, `CHANGELOG` and see `node bin/gitcracken.js --help` for more information (don't forget install modules `npm i`).
 
 # How I can help?
 

@@ -4,7 +4,7 @@
 # License: GNU GPL v3
 
 _gitkrakenver=2.6.0
-_electronver=1.6.11
+_electronver=1.3.15
 _gitcrackenver=17ZX1Are
 
 _systemidletimever=1.0.4
@@ -18,7 +18,7 @@ _runasver=3.1.1
 _segfaulthandlerver=1.0.0
 
 _workdir=$(pwd)
-_scriptdir=$(dirname $0)
+_scriptdir=$(dirname "$(readlink -f $0)")
 
 remote=(
   "https://release.gitkraken.com/linux/v${_gitkrakenver}.tar.gz"
@@ -34,15 +34,16 @@ local=(
 
 download() {
   for (( i=0; i < ${#remote[@]}; ++i )); do
-    if [[ ! -f ${local[$i]} ]]; then
+    if [[ ! -f "${local[$i]}" ]]; then
       echo "Downloading \"${remote[$i]}\"..."
-      local http_code=$(curl -L ${remote[$i]} -o "${local[$i]}.part" -w '%{http_code}' | head -n 1 | cut -d$' ' -f2)
+      local http_code=$(curl -L "${remote[$i]}" -o "${local[$i]}.part" -w '%{http_code}' | head -n 1 | cut -d$' ' -f2)
       if [[ $? != 0 ]]; then exit $?; fi
       if [[ ${http_code} != 200 ]]; then
         echo "The requested URL returned error: ${http_code}"
         exit ${http_code}
       fi
-      mv "${local[$i]}.part" ${local[$i]}
+      mv "${local[$i]}.part" "${local[$i]}"
+      if [[ $? != 0 ]]; then exit $?; fi
     fi
   done
 }
@@ -55,19 +56,19 @@ checksum() {
 prepare() {
   # GitKraken
   mkdir -p "${_workdir}/gitkraken-${_gitkrakenver}"
-  bsdtar xvf ${local[0]} -C "${_workdir}/gitkraken-${_gitkrakenver}"
+  bsdtar xvf "${local[0]}" -C "${_workdir}/gitkraken-${_gitkrakenver}"
   if [[ $? != 0 ]]; then exit $?; fi
   _resources="${_workdir}/gitkraken-${_gitkrakenver}/gitkraken/resources"
 
   # Electron
   mkdir -p "${_workdir}/gitkraken-pro-${_gitkrakenver}"
-  bsdtar zxf ${local[1]} -C "${_workdir}/gitkraken-pro-${_gitkrakenver}"
+  bsdtar zxf "${local[1]}" -C "${_workdir}/gitkraken-pro-${_gitkrakenver}"
   if [[ $? != 0 ]]; then exit $?; fi
   _resources_pro="${_workdir}/gitkraken-pro-${_gitkrakenver}/resources"
 
   # GitCracken
   mkdir -p "${_workdir}/gitcracken-${_gitcrackenver}"
-  base64 -d ${local[2]} > "${_workdir}/gitcracken-${_gitcrackenver}.tar.xz"
+  base64 -d "${local[2]}" > "${_workdir}/gitcracken-${_gitcrackenver}.tar.xz"
   if [[ $? != 0 ]]; then exit $?; fi
   bsdtar xpvf "${_workdir}/gitcracken-${_gitcrackenver}.tar.xz" -C "${_workdir}/gitcracken-${_gitcrackenver}"
   if [[ $? != 0 ]]; then exit $?; fi
@@ -75,9 +76,9 @@ prepare() {
   npm i
   if [[ $? != 0 ]]; then exit $?; fi
   _gitcracken="${_workdir}/gitcracken-${_gitcrackenver}/GitCracken/bin/gitcracken.js"
-  node ${_gitcracken} unpack --asar "${_resources}/app.asar" --asar-directory "${_resources}/app" -v
+  node "${_gitcracken}" unpack --asar "${_resources}/app.asar" --asar-directory "${_resources}/app" -v
   if [[ $? != 0 ]]; then exit $?; fi
-  node ${_gitcracken} patch-directory --asar-directory "${_resources}/app" -v
+  node "${_gitcracken}" patch-directory --asar-directory "${_resources}/app" -v
   if [[ $? != 0 ]]; then exit $?; fi
 }
 
@@ -105,7 +106,7 @@ build() {
 }
 
 package() {
-  node ${_gitcracken} pack --asar "${_resources_pro}/app.asar" --asar-directory "${_resources}/app" -v
+  node "${_gitcracken}" pack --asar "${_resources_pro}/app.asar" --asar-directory "${_resources}/app" -v
   if [[ $? != 0 ]]; then exit $?; fi
 }
 
