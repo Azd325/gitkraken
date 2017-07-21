@@ -3,22 +3,28 @@
 # Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 # License: GNU GPL v3
 
-_gitkrakenver=2.6.0
+_gitkrakenver=2.7.0
 _electronver=1.3.15
-_gitcrackenver=17ZX1Are
+_gitcrackenver=ahwuAWk4
 
 _systemidletimever=1.0.4
 _findgitrepositoriesver=0.1.0
-_keyboardlayoutver=1.0.0
+_keyboardlayoutver=1.3.1
 _keytarver=3.0.0
 _nodegitver=0.18.3
-_nsfwver=1.0.14
-_pathwatcherver=6.3.2
+_nsfwver=1.0.16
+_pathwatcherver=6.9.0
 _runasver=3.1.1
 _segfaulthandlerver=1.0.0
 
 _workdir=$(pwd)
 _scriptdir=$(dirname "$(readlink -f $0)")
+
+if [[ ${GITKRAKEN_ENABLE_ENTERPRISE} ]]; then
+  _gitkraken_prefix=enterprise
+else
+  _gitkraken_prefix=pro
+fi
 
 remote=(
   "https://release.gitkraken.com/linux/v${_gitkrakenver}.tar.gz"
@@ -61,10 +67,10 @@ prepare() {
   _resources="${_workdir}/gitkraken-${_gitkrakenver}/gitkraken/resources"
 
   # Electron
-  mkdir -p "${_workdir}/gitkraken-pro-${_gitkrakenver}"
-  bsdtar zxf "${local[1]}" -C "${_workdir}/gitkraken-pro-${_gitkrakenver}"
+  mkdir -p "${_workdir}/gitkraken-${_gitkraken_prefix}-${_gitkrakenver}"
+  bsdtar zxf "${local[1]}" -C "${_workdir}/gitkraken-${_gitkraken_prefix}-${_gitkrakenver}"
   if [[ $? != 0 ]]; then exit $?; fi
-  _resources_pro="${_workdir}/gitkraken-pro-${_gitkrakenver}/resources"
+  _resources_pro="${_workdir}/gitkraken-${_gitkraken_prefix}-${_gitkrakenver}/resources"
 
   # GitCracken
   mkdir -p "${_workdir}/gitcracken-${_gitcrackenver}"
@@ -75,15 +81,17 @@ prepare() {
   cd "${_workdir}/gitcracken-${_gitcrackenver}/GitCracken"
   npm i
   if [[ $? != 0 ]]; then exit $?; fi
-  _gitcracken="${_workdir}/gitcracken-${_gitcrackenver}/GitCracken/bin/gitcracken.js"
+  npm run build
+  if [[ $? != 0 ]]; then exit $?; fi
+  _gitcracken="${_workdir}/gitcracken-${_gitcrackenver}/GitCracken/dest/bin/gitcracken.js"
   node "${_gitcracken}" unpack --asar "${_resources}/app.asar" --asar-directory "${_resources}/app" -v
   if [[ $? != 0 ]]; then exit $?; fi
-  node "${_gitcracken}" patch-directory --asar-directory "${_resources}/app" -v
+  node "${_gitcracken}" patch-directory --asar-directory "${_resources}/app" --feature "${_gitkraken_prefix}" -v
   if [[ $? != 0 ]]; then exit $?; fi
 }
 
 rebuild_node() {
-  mkdir -p "${_workdir}/gitkraken-modules-${_gitkrakenver}" && cd $_
+  mkdir -p "${_workdir}/gitkraken-modules-${_gitkrakenver}" && cd "$_"
   npm i $1@$3
   if [[ $? != 0 ]]; then exit $?; fi
   cd "node_modules/$1"
@@ -96,7 +104,7 @@ rebuild_node() {
 build() {
   rebuild_node @paulcbetts/system-idle-time system_idle_time ${_systemidletimever}
   rebuild_node find-git-repositories findGitRepos ${_findgitrepositoriesver}
-  rebuild_node keyboard-layout keyboard-layout-observer ${_keyboardlayoutver}
+  rebuild_node keyboard-layout keyboard-layout-manager ${_keyboardlayoutver}
   rebuild_node keytar keytar ${_keytarver}
   rebuild_node nodegit nodegit ${_nodegitver}
   rebuild_node nsfw nsfw ${_nsfwver}

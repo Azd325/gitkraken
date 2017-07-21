@@ -6,13 +6,26 @@
 # Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
 
 _pkgname=gitkraken
-pkgname="${_pkgname}-pro"
-pkgrel=3
-pkgver=2.6.0
-pkgdesc='The most popular Git GUI for Arch Linux with Pro features.'
+_pkgname_pro="${_pkgname}-pro"
+_pkgname_enterprise="${_pkgname}-enterprise"
+
+if [[ ${GITKRAKEN_ENABLE_ENTERPRISE} ]]; then
+    pkgname=${_pkgname_enterprise}
+else
+    pkgname=${_pkgname_pro}
+fi
+
+pkgrel=1
+pkgver=2.7.0
+pkgdesc='The most popular Git GUI for Arch Linux.'
 url='https://www.gitkraken.com/'
-conflicts=(${_pkgname})
-provides=(${conflicts[@]} ${pkgname})
+conflicts=(${_pkgname} ${_pkgname_pro} ${_pkgname_enterprise})
+provides=(${_pkgname} ${_pkgname_pro})
+
+if [[ ${GITKRAKEN_ENABLE_ENTERPRISE} ]]; then
+    provides+=(${_pkgname_enterprise})
+fi
+
 arch=('x86_64')
 license=('custom')
 depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libxss')
@@ -26,11 +39,11 @@ source=(
     'gitkraken.png'
     'gitkraken.sh'
 )
-sha256sums=('503f9d4bc2e0e28d312314d2a7d585ef1cc3dbe5fac6ac0090ccaa1e7f88a3cb'
-            'a673935e0f366ba8f00bb31b13876311741db98fa8c6b3b34580d1f01da8df91'
+sha256sums=('0c99e800e757b578d63750d18c915a62e25380ffc2d11fc9cb87ac71a0514e58'
+            'f72258d4ba785c2eae75abd77fd5d504d69e9bce6cf31504042b599b56eb9a6f'
             '5b3294331463f7fd983e78f8f54e293d66150b833db164ee1e4137e038846bc4'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
-            '338a4c72ad0efd9f15d92e12f69872aba3adf832bb8a16ed16decdc5fdca03c3')
+            'e31fefd107a69e9364d28029027ca63de229b744e58b7b1b24a37bf7a29e67e0')
 
 build() {
     bash "gitkraken-pro.sh"
