@@ -29,7 +29,7 @@ https://gitcracken-enterprise-server.herokuapp.com/
 
 Login or register with any email and password on `Enterprise` edition!
 
-> Warning! Our server use free account, due to which its performance may not meet your expectations!
+> Warning! Our heroku server use free account, due to which its performance may not meet your expectations!
 
 > Warning! We don't store information about you, don't track you and etc.
 
@@ -61,7 +61,7 @@ See instruction for [Arch Linux](#i-love-arch-linux-and-i-use-it)
 How to use this script?
 
 1. Install dependencies (different systems require different dependencies)
-2. Put `gitkraken-pro.sh` and `gitkraken-pro.sha256` to any drectory (better without spaces nodejs/node-gyp#65)
+2. Put `gitkraken-pro.sh` and `gitkraken-pro.sha256` to any drectory (better without spaces [nodejs/node-gyp#65](https://github.com/nodejs/node-gyp/issues/65))
 3. Run `gitkraken-pro.sh` to build `Pro` edition
 4. Run `GITKRAKEN_ENABLE_ENTERPRISE=y gitkraken-pro.sh` to build `Enterprise` edition
 5. You can find your files in `gitkraken-<edition>-<version>` directory
