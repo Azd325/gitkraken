@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 # Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 # License: GNU GPL v3
@@ -42,63 +43,45 @@ download() {
   for (( i=0; i < ${#remote[@]}; ++i )); do
     if [[ ! -f "${local[$i]}" ]]; then
       echo "Downloading \"${remote[$i]}\"..."
-      local http_code=$(curl -L "${remote[$i]}" -o "${local[$i]}.part" -w '%{http_code}' | head -n 1 | cut -d$' ' -f2)
-      if [[ $? != 0 ]]; then exit $?; fi
-      if [[ ${http_code} != 200 ]]; then
-        echo "The requested URL returned error: ${http_code}"
-        exit ${http_code}
-      fi
+      curl -L "${remote[$i]}" -o "${local[$i]}.part" --fail
       mv "${local[$i]}.part" "${local[$i]}"
-      if [[ $? != 0 ]]; then exit $?; fi
     fi
   done
 }
 
 checksum() {
   sha256sum -c "${_scriptdir}/gitkraken-pro.sha256"
-  if [[ $? != 0 ]]; then exit $?; fi
 }
 
 prepare() {
   # GitKraken
   mkdir -p "${_workdir}/gitkraken-${_gitkrakenver}"
   bsdtar xvf "${local[0]}" -C "${_workdir}/gitkraken-${_gitkrakenver}"
-  if [[ $? != 0 ]]; then exit $?; fi
   _resources="${_workdir}/gitkraken-${_gitkrakenver}/gitkraken/resources"
 
   # Electron
   mkdir -p "${_workdir}/gitkraken-${_gitkraken_prefix}-${_gitkrakenver}"
   bsdtar zxf "${local[1]}" -C "${_workdir}/gitkraken-${_gitkraken_prefix}-${_gitkrakenver}"
-  if [[ $? != 0 ]]; then exit $?; fi
   _resources_pro="${_workdir}/gitkraken-${_gitkraken_prefix}-${_gitkrakenver}/resources"
 
   # GitCracken
   mkdir -p "${_workdir}/gitcracken-${_gitcrackenver}"
   base64 -d "${local[2]}" > "${_workdir}/gitcracken-${_gitcrackenver}.tar.xz"
-  if [[ $? != 0 ]]; then exit $?; fi
   bsdtar xpvf "${_workdir}/gitcracken-${_gitcrackenver}.tar.xz" -C "${_workdir}/gitcracken-${_gitcrackenver}"
-  if [[ $? != 0 ]]; then exit $?; fi
   cd "${_workdir}/gitcracken-${_gitcrackenver}/GitCracken"
   npm i
-  if [[ $? != 0 ]]; then exit $?; fi
   npm run build
-  if [[ $? != 0 ]]; then exit $?; fi
   _gitcracken="${_workdir}/gitcracken-${_gitcrackenver}/GitCracken/dest/bin/gitcracken.js"
   node "${_gitcracken}" unpack --asar "${_resources}/app.asar" --asar-directory "${_resources}/app" -v
-  if [[ $? != 0 ]]; then exit $?; fi
   node "${_gitcracken}" patch-directory --asar-directory "${_resources}/app" --feature "${_gitkraken_prefix}" -v
-  if [[ $? != 0 ]]; then exit $?; fi
 }
 
 rebuild_node() {
   mkdir -p "${_workdir}/gitkraken-modules-${_gitkrakenver}" && cd "$_"
   npm i $1@$3
-  if [[ $? != 0 ]]; then exit $?; fi
   cd "node_modules/$1"
   HOME="./.electron-gyp" node-gyp rebuild --target=${_electronver} --arch=x64 --dist-url="https://atom.io/download/electron"
-  if [[ $? != 0 ]]; then exit $?; fi
   cp "build/Release/$2.node" "${_resources}/app/node_modules/$1/build/Release"
-  if [[ $? != 0 ]]; then exit $?; fi
 }
 
 build() {
@@ -115,7 +98,6 @@ build() {
 
 package() {
   node "${_gitcracken}" pack --asar "${_resources_pro}/app.asar" --asar-directory "${_resources}/app" -v
-  if [[ $? != 0 ]]; then exit $?; fi
 }
 
 download
