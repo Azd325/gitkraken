@@ -15,6 +15,7 @@ We support various platforms:
 
 - [Arch Linux](#i-love-arch-linux-and-i-use-it)
 - [Manjaro](#i-love-arch-way-and-i-use-manjaro)
+- [Antergos](#i-love-arch-linux-with-installer-and-i-use-antergos)
 - Other linux distributions (only [common instructions](#-gitkraken-pro))
 - Windows (only [Patcher](#gitcracken-aka-patcher))
 - macOS (only [Patcher](#gitcracken-aka-patcher))
@@ -43,14 +44,18 @@ Login or register with any email and password on `Enterprise` edition!
 
 `Arch Linux` is main platform to support. Just download [latest release](https://github.com/KillWolfVlad/GitKraken-Pro-AUR/releases/latest) source code, extract archive, open your favorite terminal in directory with `PKGBUILD` and type:
 
-- `makepkg -ifs` if you want install `Pro` edition
-- `GITKRAKEN_ENABLE_ENTERPRISE=y makepkg -ifs` if you want install `Enterprise` edition
+- `makepkg -s` to build `Pro` and `Enterprise` editions
+- Install via `pacman -U fileName` needed package
 
 After installation you can login or register with your real email and password (on `Pro` edition) or connnect to `GitKraken's Enterprise Server` (on `Enterprise` edition) (see [enterprise](#about-enterprise-server) notes for more details)
 
 You can say: "Why I can't find this wonderful `PKGBUILD` in `AUR`?". `gitkraken-pro` [was deleted](https://lists.archlinux.org/pipermail/aur-requests/2017-February/016054.html) from `AUR`.
 
 # I love Arch Way and I use Manjaro
+
+See instruction for [Arch Linux](#i-love-arch-linux-and-i-use-it)
+
+# I love Arch Linux with installer and I use Antergos
 
 See instruction for [Arch Linux](#i-love-arch-linux-and-i-use-it)
 
@@ -62,11 +67,10 @@ How to use this script?
 
 1. Install dependencies (different systems require different dependencies)
 2. Put `gitkraken-pro.sh` and `gitkraken-pro.sha256` to any drectory (better without spaces [nodejs/node-gyp#65](https://github.com/nodejs/node-gyp/issues/65))
-3. Run `gitkraken-pro.sh` to build `Pro` edition
-4. Run `GITKRAKEN_ENABLE_ENTERPRISE=y gitkraken-pro.sh` to build `Enterprise` edition
-5. You can find your files in `gitkraken-<edition>-<version>` directory
-6. Execute `electron` file and enjoy!
-7. You can login or register with your real email and password (on `Pro` edition) or connnect to `GitKraken's Enterprise Server` (on `Enterprise` edition) (see [enterprise](#about-enterprise-server) notes for more details)
+3. Run `gitkraken-pro.sh` to build `Pro` and `Enterprise` editions
+4. You can find your files in `gitkraken-<edition>-<version>` directory
+5. Execute `electron` file and enjoy!
+6. You can login or register with your real email and password (on `Pro` edition) or connnect to `GitKraken's Enterprise Server` (on `Enterprise` edition) (see [enterprise](#about-enterprise-server) notes for more details)
 
 # GitCracken aka Patcher
 

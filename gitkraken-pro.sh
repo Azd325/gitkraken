@@ -21,11 +21,10 @@ _segfaulthandlerver=1.0.0
 _workdir=$(pwd)
 _scriptdir=$(dirname "$(readlink -f $0)")
 
-if [[ ${GITKRAKEN_ENABLE_ENTERPRISE} ]]; then
-  _gitkraken_prefix=enterprise
-else
-  _gitkraken_prefix=pro
-fi
+features=(
+  'pro'
+  'enterprise'
+)
 
 remote=(
   "https://release.gitkraken.com/linux/v${_gitkrakenver}.tar.gz"
@@ -60,9 +59,12 @@ prepare() {
   _resources="${_workdir}/gitkraken-${_gitkrakenver}/gitkraken/resources"
 
   # Electron
-  mkdir -p "${_workdir}/gitkraken-${_gitkraken_prefix}-${_gitkrakenver}"
-  bsdtar zxf "${local[1]}" -C "${_workdir}/gitkraken-${_gitkraken_prefix}-${_gitkrakenver}"
-  _resources_pro="${_workdir}/gitkraken-${_gitkraken_prefix}-${_gitkrakenver}/resources"
+  _resources_features=()
+  for feature in "${features[@]}"; do
+    mkdir -p "${_workdir}/gitkraken-${feature}-${_gitkrakenver}"
+    bsdtar zxf "${local[1]}" -C "${_workdir}/gitkraken-${feature}-${_gitkrakenver}"
+    _resources_features+=("${_workdir}/gitkraken-${feature}-${_gitkrakenver}/resources")
+  done
 
   # GitCracken
   mkdir -p "${_workdir}/gitcracken-${_gitcrackenver}"
@@ -72,8 +74,11 @@ prepare() {
   npm i
   npm run build
   _gitcracken="${_workdir}/gitcracken-${_gitcrackenver}/GitCracken/dest/bin/gitcracken.js"
-  node "${_gitcracken}" unpack --asar "${_resources}/app.asar" --asar-directory "${_resources}/app" -v
-  node "${_gitcracken}" patch-directory --asar-directory "${_resources}/app" --feature "${_gitkraken_prefix}" -v
+
+  for feature in "${features[@]}"; do
+    node "${_gitcracken}" unpack --asar "${_resources}/app.asar" --asar-directory "${_resources}/app-${feature}" -v
+    node "${_gitcracken}" patch-directory --asar-directory "${_resources}/app-${feature}" --feature "${feature}" -v
+  done
 }
 
 rebuild_node() {
@@ -81,7 +86,9 @@ rebuild_node() {
   npm i $1@$3
   cd "node_modules/$1"
   HOME="./.electron-gyp" node-gyp rebuild --target=${_electronver} --arch=x64 --dist-url="https://atom.io/download/electron"
-  cp "build/Release/$2.node" "${_resources}/app/node_modules/$1/build/Release"
+  for feature in "${features[@]}"; do
+    cp "build/Release/$2.node" "${_resources}/app-${feature}/node_modules/$1/build/Release"
+  done
 }
 
 build() {
@@ -97,7 +104,9 @@ build() {
 }
 
 package() {
-  node "${_gitcracken}" pack --asar "${_resources_pro}/app.asar" --asar-directory "${_resources}/app" -v
+  for (( i=0; i < ${#features[@]}; ++i )); do
+    node "${_gitcracken}" pack --asar "${_resources_features[$i]}/app.asar" --asar-directory "${_resources}/app-${features[$i]}" -v
+  done
 }
 
 download
