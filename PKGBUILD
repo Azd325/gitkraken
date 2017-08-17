@@ -7,8 +7,8 @@
 
 pkgbase=gitkraken-pro
 pkgname=('gitkraken-pro' 'gitkraken-enterprise')
-pkgrel=2
-pkgver=2.7.0
+pkgrel=1
+pkgver=2.7.1
 pkgdesc='The most popular Git GUI for Arch Linux.'
 url='https://github.com/KillWolfVlad/GitKraken-Pro-AUR/'
 provides=('gitkraken' 'gitkraken-pro')
@@ -20,48 +20,41 @@ makedepends=('nodejs' 'npm' 'python2')
 backup=()
 install=''
 source=(
-    'gitkraken-pro.sh'
-    'gitkraken-pro.sha256'
-    'gitkraken.desktop'
-    'gitkraken.png'
-    'gitkraken.sh'
+  'gitkraken-pro.sh'
+  'gitkraken-pro.sha256'
+  'gitkraken.desktop'
+  'gitkraken.png'
+  'gitkraken.sh'
 )
-sha256sums=('7c9e703cc288f483f96a84fa272b8ae9736f6fdb6a050b9813494c3c365c3e07'
-            'f72258d4ba785c2eae75abd77fd5d504d69e9bce6cf31504042b599b56eb9a6f'
+sha256sums=('097fd84d20c759e1245eaf7f3ab53830b2415070756abb04d33a0438be78c560'
+            '33aed54b4c6bea50ae608628cbc8eb490c438f16cb29b8f697607835f5cc6668'
             '5b3294331463f7fd983e78f8f54e293d66150b833db164ee1e4137e038846bc4'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
             'e31fefd107a69e9364d28029027ca63de229b744e58b7b1b24a37bf7a29e67e0')
 
 build() {
-    bash "gitkraken-pro.sh"
+  bash "gitkraken-pro.sh"
+}
+
+_package() {
+  install -d "${pkgdir}/opt"
+  cp -R "./$1-${pkgver}" "${pkgdir}/opt/gitkraken"
+
+  find "${pkgdir}/opt/gitkraken/" -type f -exec chmod 644 {} \;
+  chmod 755 "${pkgdir}/opt/gitkraken/electron"
+
+  install -d "${pkgdir}/usr/bin"
+
+  install -D -m755 "./gitkraken.sh" "${pkgdir}/usr/bin/gitkraken"
+  install -D -m644 "./gitkraken.desktop" "${pkgdir}/usr/share/applications/gitkraken.desktop"
+  install -D -m644 "./gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
 }
 
 package_gitkraken-pro() {
-    install -d "${pkgdir}/opt"
-    cp -R "./gitkraken-pro-${pkgver}" "${pkgdir}/opt/gitkraken"
-
-    find "${pkgdir}/opt/gitkraken/" -type f -exec chmod 644 {} \;
-    chmod 755 "${pkgdir}/opt/gitkraken/electron"
-
-    install -d "${pkgdir}/usr/bin"
-
-    install -D -m755 "./gitkraken.sh" "${pkgdir}/usr/bin/gitkraken"
-    install -D -m644 "./gitkraken.desktop" "${pkgdir}/usr/share/applications/gitkraken.desktop"
-    install -D -m644 "./gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
+  _package "gitkraken-pro"
 }
 
 package_gitkraken-enterprise() {
-    provides+=('gitkraken-enterprise')
-
-    install -d "${pkgdir}/opt"
-    cp -R "./gitkraken-enterprise-${pkgver}" "${pkgdir}/opt/gitkraken"
-
-    find "${pkgdir}/opt/gitkraken/" -type f -exec chmod 644 {} \;
-    chmod 755 "${pkgdir}/opt/gitkraken/electron"
-
-    install -d "${pkgdir}/usr/bin"
-
-    install -D -m755 "./gitkraken.sh" "${pkgdir}/usr/bin/gitkraken"
-    install -D -m644 "./gitkraken.desktop" "${pkgdir}/usr/share/applications/gitkraken.desktop"
-    install -D -m644 "./gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
+  provides+=('gitkraken-enterprise')
+  _package "gitkraken-enterprise"
 }

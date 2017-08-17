@@ -4,17 +4,17 @@ set -e
 # Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 # License: GNU GPL v3
 
-_gitkrakenver=2.7.0
-_electronver=1.3.15
+_gitkrakenver=2.7.1
+_electronver=1.6.11
 _gitcrackenver=ahwuAWk4
 
 _systemidletimever=1.0.4
 _findgitrepositoriesver=0.1.0
-_keyboardlayoutver=1.3.1
+_keyboardlayoutver=2.0.13
 _keytarver=3.0.0
 _nodegitver=0.18.3
 _nsfwver=1.0.16
-_pathwatcherver=6.9.0
+_pathwatcherver=7.1.0
 _runasver=3.1.1
 _segfaulthandlerver=1.0.0
 
