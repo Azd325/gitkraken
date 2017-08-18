@@ -17,8 +17,6 @@ arch=('x86_64')
 license=('custom')
 depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libxss')
 makedepends=('nodejs' 'npm' 'python2')
-backup=()
-install=''
 source=(
   'gitkraken-pro.sh'
   'gitkraken-pro.sha256'
@@ -33,21 +31,21 @@ sha256sums=('097fd84d20c759e1245eaf7f3ab53830b2415070756abb04d33a0438be78c560'
             'e31fefd107a69e9364d28029027ca63de229b744e58b7b1b24a37bf7a29e67e0')
 
 build() {
-  bash "gitkraken-pro.sh"
+  bash "${srcdir}/gitkraken-pro.sh"
 }
 
 _package() {
   install -d "${pkgdir}/opt"
-  cp -R "./$1-${pkgver}" "${pkgdir}/opt/gitkraken"
+  cp -R "${srcdir}/$1-${pkgver}" "${pkgdir}/opt/gitkraken"
 
   find "${pkgdir}/opt/gitkraken/" -type f -exec chmod 644 {} \;
   chmod 755 "${pkgdir}/opt/gitkraken/electron"
 
   install -d "${pkgdir}/usr/bin"
 
-  install -D -m755 "./gitkraken.sh" "${pkgdir}/usr/bin/gitkraken"
-  install -D -m644 "./gitkraken.desktop" "${pkgdir}/usr/share/applications/gitkraken.desktop"
-  install -D -m644 "./gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
+  install -D -m755 "${srcdir}/gitkraken.sh" "${pkgdir}/usr/bin/gitkraken"
+  install -D -m644 "${srcdir}/gitkraken.desktop" "${pkgdir}/usr/share/applications/gitkraken.desktop"
+  install -D -m644 "${srcdir}/gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
 }
 
 package_gitkraken-pro() {

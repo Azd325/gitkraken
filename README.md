@@ -14,13 +14,12 @@ What we do (for more details see [script](#-gitkraken-pro) notes)?
 We support various platforms:
 
 - [Arch Linux](#i-love-arch-linux-and-i-use-it)
-- [Manjaro](#i-love-arch-way-and-i-use-manjaro)
-- [Antergos](#i-love-arch-linux-with-installer-and-i-use-antergos)
+- [Ubuntu](#i-love-space-tourism-and-i-use-ubuntu)
 - Other linux distributions (only [common instructions](#-gitkraken-pro))
 - Windows (only [Patcher](#gitcracken-aka-patcher))
 - macOS (only [Patcher](#gitcracken-aka-patcher))
 
-# About Enterprise Server
+## About Enterprise Server
 
 Also we provide own (cross-platform, free, open-source, lightweight, without external dependencies e.g. databases) realisation of [GitKraken's Enterprise Server](https://www.gitkraken.com/enterprise). For more details see [Patcher](#gitcracken-aka-patcher) notes. Or try connect to our enterprise server now:
 
@@ -42,22 +41,34 @@ Login or register with any email and password on `Enterprise` edition!
 
 # I love Arch Linux and I use it
 
-`Arch Linux` is main platform to support. Just download [latest release](https://github.com/KillWolfVlad/GitKraken-Pro-AUR/releases/latest) source code, extract archive, open your favorite terminal in directory with `PKGBUILD` and type:
+## Arch Linux & Manjaro & Antergos
+
+`Arch Linux` is [main platform](https://wiki.archlinux.org/index.php/Arch_is_the_best) to support. Just download [latest release](https://github.com/KillWolfVlad/GitKraken-Pro-AUR/releases/latest) source code, extract archive, open your favorite terminal in directory with `PKGBUILD` and type:
 
 - `makepkg -s` to build `Pro` and `Enterprise` editions
 - Install via `pacman -U fileName` needed package
 
 After installation you can login or register with your real email and password (on `Pro` edition) or connnect to `GitKraken's Enterprise Server` (on `Enterprise` edition) (see [enterprise](#about-enterprise-server) notes for more details)
 
-You can say: "Why I can't find this wonderful `PKGBUILD` in `AUR`?". `gitkraken-pro` [was deleted](https://lists.archlinux.org/pipermail/aur-requests/2017-February/016054.html) from `AUR`.
+You can say: "Why I can't find this wonderful `PKGBUILD` in `AUR`?". `gitkraken-pro` [was deleted](https://lists.archlinux.org/pipermail/aur-requests/2017-February/016054.html) from `AUR`
 
-# I love Arch Way and I use Manjaro
+# I love space tourism and I use Ubuntu
 
-See instruction for [Arch Linux](#i-love-arch-linux-and-i-use-it)
+## 16.04.3 LTS _Xenial Xerus_ & 17.04 _Zesty Zapus_
 
-# I love Arch Linux with installer and I use Antergos
+Install build dependencies (you can delete them after build)
 
-See instruction for [Arch Linux](#i-love-arch-linux-and-i-use-it)
+```
+build-essential nodejs nodejs-legacy npm curl bsdtar fakeroot libx11-dev libxext-dev libxss-dev libxkbfile-dev libgnome-keyring-dev libcurl4-openssl-dev
+```
+
+Download [latest release](https://github.com/KillWolfVlad/GitKraken-Pro-AUR/releases/latest) source code, extract archive, open your favorite terminal in directory with `gitkraken-pro-deb.sh` and type:
+
+- `bash gitkraken-pro-deb.sh` to build `Pro` and `Enterprise` editions
+- Delete previous `gitkraken-<edition>` package
+- Install needed *.deb package
+
+After installation you can login or register with your real email and password (on `Pro` edition) or connnect to `GitKraken's Enterprise Server` (on `Enterprise` edition) (see [enterprise](#about-enterprise-server) notes for more details)
 
 # #! GitKraken Pro
 

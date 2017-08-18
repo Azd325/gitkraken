@@ -1,3 +1,6 @@
 pkg/
+pkg-deb/
 src/
+src-deb/
 *.tar*
+*.deb
