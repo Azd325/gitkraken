@@ -4,7 +4,7 @@ set -e
 # Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 # License: GNU GPL v3
 
-_gitkrakenver=2.7.1
+_gitkrakenver=3.0.0
 _electronver=1.6.11
 _gitcrackenver=ahwuAWk4
 
@@ -12,7 +12,8 @@ _systemidletimever=1.0.4
 _findgitrepositoriesver=0.1.0
 _keyboardlayoutver=2.0.13
 _keytarver=3.0.0
-_nodegitver=0.18.3
+_nodegitver=0.20.1
+_nodeptyver=0.7.0
 _nsfwver=1.0.16
 _pathwatcherver=7.1.0
 _runasver=3.1.1
@@ -97,6 +98,7 @@ build() {
   rebuild_node keyboard-layout keyboard-layout-manager ${_keyboardlayoutver}
   rebuild_node keytar keytar ${_keytarver}
   rebuild_node nodegit nodegit ${_nodegitver}
+  rebuild_node node-pty pty ${_nodeptyver}
   rebuild_node nsfw nsfw ${_nsfwver}
   rebuild_node pathwatcher pathwatcher ${_pathwatcherver}
   rebuild_node runas runas ${_runasver}
