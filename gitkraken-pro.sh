@@ -4,7 +4,7 @@ set -e
 # Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 # License: GNU GPL v3
 
-_gitkrakenver=3.0.0
+_gitkrakenver=3.0.1
 _electronver=1.6.11
 _gitcrackenver=ahwuAWk4
 
@@ -12,7 +12,7 @@ _systemidletimever=1.0.4
 _findgitrepositoriesver=0.1.0
 _keyboardlayoutver=2.0.13
 _keytarver=3.0.0
-_nodegitver=0.20.1
+_nodegitver=0.20.2
 _nodeptyver=0.7.0
 _nsfwver=1.0.16
 _pathwatcherver=7.1.0
@@ -20,7 +20,7 @@ _runasver=3.1.1
 _segfaulthandlerver=1.0.0
 
 _workdir=$(pwd)
-_scriptdir=$(dirname "$(readlink -f $0)")
+_scriptdir=$(dirname "$(readlink -f "$0")")
 
 features=(
   'pro'
@@ -84,7 +84,7 @@ prepare() {
 
 rebuild_node() {
   mkdir -p "${_workdir}/gitkraken-modules-${_gitkrakenver}" && cd "$_"
-  npm i $1@$3
+  npm i "$1"@"$3"
   cd "node_modules/$1"
   HOME="./.electron-gyp" node-gyp rebuild --target=${_electronver} --arch=x64 --dist-url="https://atom.io/download/electron"
   for feature in "${features[@]}"; do

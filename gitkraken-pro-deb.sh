@@ -5,7 +5,7 @@ set -e
 # License: GNU GPL v3
 
 _workdir=$(pwd)
-_scriptdir=$(dirname "$(readlink -f $0)")
+_scriptdir=$(dirname "$(readlink -f "$0")")
 
 source "${_scriptdir}/PKGBUILD"
 
@@ -42,7 +42,7 @@ Suggests: libgnome-keyring0, gir1.2-gnomekeyring-1.0
 Section: misc
 Priority: optional
 Architecture: amd64
-Installed-Size: 237704
+Installed-Size: 239348
 Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 Description: Unleash your repo"
 
