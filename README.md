@@ -98,13 +98,13 @@ for more usage information (don't forget install modules `npm i`).
 Auto patch installed `GitKraken` (maybe require `sudo` privileges)
 
 ```bash
-node bin/gitcracken.js patch
+node bin/gitcracken.js patcher auto
 ```
 
 For unlock `Enterprise` edition
 
 ```bash
-node bin/gitcracken.js patch --feature enterprise
+node bin/gitcracken.js patcher auto --feature enterprise
 ```
 
 Start `GitCracken's Enterprise Server` (login or register with any email and password on `Enterprise` edition)

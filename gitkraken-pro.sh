@@ -4,9 +4,9 @@ set -e
 # Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 # License: GNU GPL v3
 
-_gitkrakenver=3.0.2
-_electronver=1.6.11
-_gitcrackenver=ahwuAWk4
+_gitkrakenver=3.1.0
+_electronver=1.6.14
+_gitcrackenver=94wx3VZt
 
 _systemidletimever=1.0.4
 _findgitrepositoriesver=0.1.0
@@ -77,8 +77,8 @@ prepare() {
   _gitcracken="${_workdir}/gitcracken-${_gitcrackenver}/GitCracken/dest/bin/gitcracken.js"
 
   for feature in "${features[@]}"; do
-    node "${_gitcracken}" unpack --asar "${_resources}/app.asar" --asar-directory "${_resources}/app-${feature}" -v
-    node "${_gitcracken}" patch-directory --asar-directory "${_resources}/app-${feature}" --feature "${feature}" -v
+    node "${_gitcracken}" patcher unpack --asar "${_resources}/app.asar" --asar-directory "${_resources}/app-${feature}"
+    node "${_gitcracken}" patcher dir --asar-directory "${_resources}/app-${feature}" --feature "${feature}"
   done
 }
 
@@ -107,7 +107,7 @@ build() {
 
 package() {
   for (( i=0; i < ${#features[@]}; ++i )); do
-    node "${_gitcracken}" pack --asar "${_resources_features[$i]}/app.asar" --asar-directory "${_resources}/app-${features[$i]}" -v
+    node "${_gitcracken}" patcher pack --asar "${_resources_features[$i]}/app.asar" --asar-directory "${_resources}/app-${features[$i]}"
   done
 }
 
