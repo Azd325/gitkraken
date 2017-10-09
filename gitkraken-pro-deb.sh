@@ -42,7 +42,7 @@ Suggests: libgnome-keyring0, gir1.2-gnomekeyring-1.0
 Section: misc
 Priority: optional
 Architecture: amd64
-Installed-Size: 239816
+Installed-Size: 239820
 Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 Description: Unleash your repo"
 

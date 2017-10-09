@@ -4,7 +4,7 @@ set -e
 # Maintainer: KillWolfVlad <github.com/KillWolfVlad>
 # License: GNU GPL v3
 
-_gitkrakenver=3.1.0
+_gitkrakenver=3.1.1
 _electronver=1.6.14
 _gitcrackenver=94wx3VZt
 

@@ -8,8 +8,8 @@
 pkgbase=gitkraken-pro
 pkgname=('gitkraken-pro' 'gitkraken-enterprise')
 pkgrel=1
-pkgver=3.1.0
-pkgdesc='The most popular Git GUI for Arch Linux.'
+pkgver=3.1.1
+pkgdesc='The legendary Git GUI client for Arch Linux'
 url='https://github.com/KillWolfVlad/GitKraken-Pro-AUR/'
 provides=('gitkraken' 'gitkraken-pro')
 conflicts=('gitkraken' 'gitkraken-pro' 'gitkraken-enterprise')
@@ -25,8 +25,8 @@ source=(
   'gitkraken.png'
   'gitkraken.sh'
 )
-sha256sums=('a3ead03869a343cb04c1a66bb246b5786dd03f54c09c1d4963e49af613dfbbd5'
-            '2071d6fd52a15d3e6a96239841b062135081f577029774a2fa97a8f7701ce251'
+sha256sums=('3c2a089dc68ab90ba7f346abc575928a5e1c585f805fab1c7d0e6144493d0460'
+            'f687dbff1dc19b9f9e305c6c189ae5e9b9e2e3bf5a0cbf7a23bfe784b4d7e2db'
             'c001122608370bc43d6cfefd8e217f337a07f544c351179e816983635f8ff45d'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
             'e31fefd107a69e9364d28029027ca63de229b744e58b7b1b24a37bf7a29e67e0')
