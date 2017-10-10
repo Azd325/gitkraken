@@ -1,47 +1,59 @@
-# Maintainer: Tim Kleinschmidt <tim.kleinschmidt@gmail.com>
+# Maintainer (master-pro branch): KillWolfVlad <github.com/KillWolfVlad>
+# Maintainer (master branch): Tim Kleinschmidt <tim.kleinschmidt@gmail.com>
 # Contributor: Marcin Wieczorek <marcin@marcin.co>
 # Contributor: Jean-Pier Brochu <jeanpier.brochu@gmail.com>
 # Contributor: Samuel Littley <samuel@samuellittley.me>
-# Contributor: KillWolfVlad <github.com/KillWolfVlad>
 # Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
 
-pkgname=gitkraken
+pkgbase=gitkraken-pro
+pkgname=('gitkraken-pro' 'gitkraken-enterprise')
 pkgrel=1
 pkgver=3.1.1
-pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
-url="https://www.gitkraken.com/"
-provides=('gitkraken')
+pkgdesc='The legendary Git GUI client for Arch Linux'
+url='https://github.com/KillWolfVlad/GitKraken-Pro-AUR/'
+provides=('gitkraken' 'gitkraken-pro')
+conflicts=('gitkraken' 'gitkraken-pro' 'gitkraken-enterprise')
 arch=('x86_64')
 license=('custom')
-depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libcurl-gnutls' 'libxss' 'rtmpdump')
+depends=('gtk2' 'nss' 'libxtst' 'libgnome-keyring' 'gconf' 'alsa-lib' 'libxss' 'rtmpdump')
+makedepends=('nodejs' 'npm' 'python2')
 optdepends=('git-lfs: git-lfs support')
-makedepends=()
-backup=()
-install=''
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://release.gitkraken.com/linux/v${pkgver}.tar.gz"
-    "GitKraken.desktop"
-    "gitkraken.png"
-    "eula.html"
-    "gitkraken.sh"
+  'gitkraken-pro.sh'
+  'gitkraken-pro.sha256'
+  'gitkraken.desktop'
+  'gitkraken.png'
+  'gitkraken.sh'
 )
-sha256sums=('2ec44a22b466a3f8ac5071417da9f6780049d553c442e4604ac9143ad95aa95b'
+sha256sums=('3c2a089dc68ab90ba7f346abc575928a5e1c585f805fab1c7d0e6144493d0460'
+            'f687dbff1dc19b9f9e305c6c189ae5e9b9e2e3bf5a0cbf7a23bfe784b4d7e2db'
             'c001122608370bc43d6cfefd8e217f337a07f544c351179e816983635f8ff45d'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
-            '9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1'
-            '1532caf9be612eddc57d0dcab94a71dcd6c5976f18b4555ba9740dcdc7f8b1d5')
+            'e31fefd107a69e9364d28029027ca63de229b744e58b7b1b24a37bf7a29e67e0')
 
-package() {
-    install -d "$pkgdir"/opt
-    cp -R "$srcdir"/gitkraken "$pkgdir"/opt/gitkraken
+build() {
+  bash "${srcdir}/gitkraken-pro.sh"
+}
 
-    find "$pkgdir"/opt/gitkraken/ -type f -exec chmod 644 {} \;
-    chmod 755 "$pkgdir"/opt/gitkraken/gitkraken
+_package() {
+  install -d "${pkgdir}/opt"
+  cp -R "${srcdir}/$1-${pkgver}" "${pkgdir}/opt/gitkraken"
 
-    install -d "$pkgdir"/usr/bin
+  find "${pkgdir}/opt/gitkraken/" -type f -exec chmod 644 {} \;
+  chmod 755 "${pkgdir}/opt/gitkraken/electron"
 
-    install -D -m755 "./gitkraken.sh" "${pkgdir}/usr/bin/gitkraken"
-    install -D -m644 "./eula.html" "${pkgdir}/usr/share/licenses/${pkgname}/eula.html"
-    install -D -m644 "./GitKraken.desktop" "${pkgdir}/usr/share/applications/GitKraken.desktop"
-    install -D -m644 "./gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
+  install -d "${pkgdir}/usr/bin"
+
+  install -D -m755 "${srcdir}/gitkraken.sh" "${pkgdir}/usr/bin/gitkraken"
+  install -D -m644 "${srcdir}/gitkraken.desktop" "${pkgdir}/usr/share/applications/gitkraken.desktop"
+  install -D -m644 "${srcdir}/gitkraken.png" "${pkgdir}/usr/share/pixmaps/gitkraken.png"
+}
+
+package_gitkraken-pro() {
+  _package "gitkraken-pro"
+}
+
+package_gitkraken-enterprise() {
+  provides+=('gitkraken-enterprise')
+  _package "gitkraken-enterprise"
 }

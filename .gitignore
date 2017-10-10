@@ -1,4 +1,6 @@
 pkg/
+pkg-deb/
 src/
-gitkraken*.tar*
-v*.tar.gz*
+src-deb/
+*.tar*
+*.deb
