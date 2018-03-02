@@ -1,11 +1,8 @@
 # GitKraken for AUR
 
-Rebuild GitKraken specially for your platform
+`$ makepkg -si`
 
-- Required disk space for build: ~1.5 GB
-- Build time: ~10 min
-
-Works on Arch Linux & Manjaro!
+Optional: If you want rebuild GitKraken specially for your platform, uncomment `#_electron=1.2.3` in *PKGBUILD*
 
 ## Update package
 
