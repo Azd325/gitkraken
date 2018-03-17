@@ -12,8 +12,8 @@
 #_electron=1.6.17
 
 pkgname=gitkraken
-pkgrel=4
-pkgver=3.3.4
+pkgrel=1
+pkgver=3.4.1
 pkgdesc='The intuitive, fast, and beautiful cross-platform Git client.'
 url='https://www.gitkraken.com/'
 provides=('gitkraken')
@@ -28,11 +28,11 @@ source=(
   "eula.html"
   "gitkraken.sh"
 )
-sha256sums=('43f232c4ab0c5fef8217dd7c5182f5b9c8fa7fcd2c296e59bbe957ce2dea1ddd'
+sha256sums=('a20f375d83bb5e6825b1f01af085b24cca88c7bc2d3eccac7a1df229dda958a2'
             'c001122608370bc43d6cfefd8e217f337a07f544c351179e816983635f8ff45d'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
             '9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1'
-            '4281df89389b0205456fb2fa8791678a7ddfc64fb17651a65230c9f02a1579de')
+            '3a7bc0c2f6bce99850f31a082c85b0922992d91e18f9cb5592e0b776de2e55a7')
 
 if [[ $_electron ]]; then
   unset depends['libcurl-gnutls']
