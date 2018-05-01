@@ -6,14 +6,15 @@
 # Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
 
 # Uncomment to rebuild GitKraken specially for your platform
-# Required disk space for build: ~1.5 GB
-# Build time: ~10 min
+# (using electron from GitHub)
+# Required disk space for build: ~5 GB
+# Build time: ~20 min
 # Works on Arch Linux & Manjaro!
-#_electron=1.6.17
+#_electron=1.8.6
 
 pkgname=gitkraken
 pkgrel=1
-pkgver=3.4.1
+pkgver=3.6.0
 pkgdesc='The intuitive, fast, and beautiful cross-platform Git client.'
 url='https://www.gitkraken.com/'
 provides=('gitkraken')
@@ -28,7 +29,7 @@ source=(
   "eula.html"
   "gitkraken.sh"
 )
-sha256sums=('a20f375d83bb5e6825b1f01af085b24cca88c7bc2d3eccac7a1df229dda958a2'
+sha256sums=('511fc3b7f1bff0183bafa67ed32d1d015feeb6bbcdd5a30f7813bfdadd9001a6'
             'c001122608370bc43d6cfefd8e217f337a07f544c351179e816983635f8ff45d'
             'a2b3551f83bcbe56da961615f066bb736cd15d98e41c93b3b4add0d56606d902'
             '9566342308bf35b56e626fa1b0d716eb16991712cc43b617c4f0d95e005311d1'
@@ -36,9 +37,9 @@ sha256sums=('a20f375d83bb5e6825b1f01af085b24cca88c7bc2d3eccac7a1df229dda958a2'
 
 if [[ $_electron ]]; then
   unset depends['libcurl-gnutls']
-  makedepends=('npm' 'python2' 'yarn' 'asar' 'jq' 'libxkbfile')
+  makedepends=('nodejs-lts-carbon' 'npm' 'python2' 'yarn' 'asar' 'jq' 'libxkbfile')
   source+=("electron-${_electron}.zip::https://github.com/electron/electron/releases/download/v${_electron}/electron-v${_electron}-linux-x64.zip")
-  sha256sums+=('2ac0cb34a64b21491f2816ec7f27d2464119d67629a4f2897d90b0b4ca492db7')
+  sha256sums+=('e9b60ef5998f210ba7374a806b38bf9c0cb7999eb85029ce15aedb60c55ba192')
   noextract=("${source[-1]%%::*}")
 fi
 
