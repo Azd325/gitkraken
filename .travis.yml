@@ -5,9 +5,7 @@ services:
 
 arch:
   script:
-    - "sudo pacman -Sy"
     - "makepkg -si --noconfirm"
-    - "sudo pacman -R gitkraken --noconfirm"
 
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
