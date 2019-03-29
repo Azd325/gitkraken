@@ -5,7 +5,7 @@ services:
 
 arch:
   script:
-    - "pacman -S namcap"
+    - "pacman -S namcap --noconfirm"
     - "makepkg -si --noconfirm"
     - "namcap PKGBUILD"
 
