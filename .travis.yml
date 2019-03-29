@@ -6,6 +6,7 @@ services:
 arch:
   script:
     - "makepkg -si --noconfirm"
+    - "namcap PKGBUILD"
 
 script:
   - "curl -s https://raw.githubusercontent.com/mikkeloscar/arch-travis/master/arch-travis.sh | bash"
