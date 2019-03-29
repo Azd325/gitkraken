@@ -4,8 +4,9 @@ services:
   - docker
 
 arch:
+  packages:
+    - namcap
   script:
-    - "pacman -S namcap --noconfirm"
     - "makepkg -si --noconfirm"
     - "namcap PKGBUILD"
 
