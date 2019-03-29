@@ -7,7 +7,7 @@ arch:
   packages:
     - namcap
   script:
-    - "makepkg -si --noconfirm"
+    - "PKGEXT='.pkg.tar' makepkg -si --noconfirm"
     - "namcap PKGBUILD"
     - "namcap gitkraken*.pkg*"
 
