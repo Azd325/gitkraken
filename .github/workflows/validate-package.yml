@@ -1,0 +1,25 @@
+---
+name: Linting
+on: [push]
+
+jobs:
+  validation:
+    name: Validate package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Validate PKGBUILD
+        id: validate-pkgbuild
+        uses: Azd325/arch-pkgbuild-builder@master
+        with:
+          target: "pkgbuild"
+          pkgname: "gitkraken"
+
+      - name: Validate SRCINFO
+        id: validate-srcinfo
+        uses: Azd325/arch-pkgbuild-builder@master
+        with:
+          target: "srcinfo"
+          pkgname: "gitkraken"
