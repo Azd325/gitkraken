@@ -1,6 +1,6 @@
 # Gitkraken AUR Package
 
-[![Build Status](https://travis-ci.org/Azd325/gitkraken.svg?branch=master)](https://travis-ci.org/Azd325/gitkraken)
+![Linting](https://github.com/Azd325/gitkraken/workflows/Linting/badge.svg)
 
 ## Update package
 
