@@ -23,3 +23,11 @@ jobs:
         with:
           target: "srcinfo"
           pkgname: "gitkraken"
+  linter:
+    name: Code Base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Lint Code Base
+        uses: docker://github/super-linter:v2.2.0
