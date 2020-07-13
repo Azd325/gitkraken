@@ -4,6 +4,7 @@
 
 ## Update package
 
+- change to the `gitkraken` folder
 - Update package version in PKGBUILD
 - Generate new checksums with `updpkgsums`
 - Test install `makepkg -si`
