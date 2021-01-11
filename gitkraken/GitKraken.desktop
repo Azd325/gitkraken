@@ -6,5 +6,5 @@ Icon=gitkraken
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=GNOME;GTK;Development;Documentation;
+Categories=GTK;Development;Documentation;
 MimeType=text/plain;

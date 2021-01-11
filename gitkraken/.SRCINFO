@@ -7,7 +7,6 @@ pkgbase = gitkraken
 	license = custom
 	depends = nss
 	depends = libxtst
-	depends = org.freedesktop.secrets
 	depends = alsa-lib
 	depends = libxss
 	optdepends = git-lfs: git-lfs support
