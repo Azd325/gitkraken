@@ -4,7 +4,7 @@
 
 ## Update package
 
-- change to the `gitkraken` folder
+- change to the `gitkraken-aur` folder
 - Update package version in PKGBUILD
 - Generate new checksums with `updpkgsums`
 - Test install `makepkg -si`
