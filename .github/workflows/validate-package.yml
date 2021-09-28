@@ -1,0 +1,38 @@
+---
+name: Linting
+on: [push, pull_request]
+
+jobs:
+  validation:
+    name: Validate package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Validate PKGBUILD
+        id: validate-pkgbuild
+        uses: Azd325/arch-pkgbuild-builder@master
+        with:
+          target: "pkgbuild"
+          pkgname: "gitkraken"
+
+      - name: Validate SRCINFO
+        id: validate-srcinfo
+        uses: Azd325/arch-pkgbuild-builder@master
+        with:
+          target: "srcinfo"
+          pkgname: "gitkraken"
+  linter:
+    name: Code Base
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_HTML: false
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
