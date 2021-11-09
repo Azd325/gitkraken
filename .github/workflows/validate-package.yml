@@ -15,6 +15,7 @@ jobs:
         uses: Azd325/arch-pkgbuild-builder@master
         with:
           target: "pkgbuild"
+          builddir: "gitkraken-aur"
           pkgname: "gitkraken"
 
       - name: Validate SRCINFO
@@ -22,6 +23,7 @@ jobs:
         uses: Azd325/arch-pkgbuild-builder@master
         with:
           target: "srcinfo"
+          builddir: "gitkraken-aur"
           pkgname: "gitkraken"
   linter:
     name: Code Base
