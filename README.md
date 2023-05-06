@@ -4,11 +4,11 @@
 
 ## Update package
 
-- change to the `gitkraken-aur` folder
-- Update package version in PKGBUILD
-- Generate new checksums with `updpkgsums`
-- Test install `makepkg -si`
-- Update .SRCINFO `makepkg --printsrcinfo > .SRCINFO`
+- change to the [gitkraken-aur](gitkraken-aur) folder
+- Update package version in [PKGBUILD](gitkraken-aur/PKGBUILD)
+- Update checksums with `updpkgsums`
+- Do a test install with `makepkg --syncdeps --install` [Docs for makepkg](https://wiki.archlinux.org/title/makepkg)
+- Update [.SRCINFO](gitkraken-aur/.SRCINFO) with `makepkg --printsrcinfo > .SRCINFO` [Docs for makepkg](https://wiki.archlinux.org/title/makepkg)
 
 ## GitKraken Information
 
