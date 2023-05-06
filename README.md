@@ -1,6 +1,10 @@
 # Gitkraken AUR Package
 
 ![Linting](https://github.com/Azd325/gitkraken/workflows/Linting/badge.svg)
+![Gitkraken AUR Version](https://img.shields.io/aur/version/gitkraken)
+![Gitkraken AUR Votes](https://img.shields.io/aur/votes/gitkraken)
+
+
 
 ## Gitkraken
 
