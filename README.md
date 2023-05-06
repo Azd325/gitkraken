@@ -4,13 +4,11 @@
 ![Gitkraken AUR Version](https://img.shields.io/aur/version/gitkraken)
 ![Gitkraken AUR Votes](https://img.shields.io/aur/votes/gitkraken)
 
-
-
 ## Gitkraken
 
-This package provides only a way to install Gitkraken on Arch Linux. 
+This package provides only a way to install Gitkraken on Arch Linux.
 
-You can receive help with Gitkraken, through the [Help Center](https://help.gitkraken.com/)
+You can receive help with Gitkraken, through the [Help Center](https://help.gitkraken.com/).
 
 You can also submit [feature requests](https://feedback.gitkraken.com/) and see upcoming features on the [roadmap](https://www.gitkraken.com/git-client/roadmap).
 
