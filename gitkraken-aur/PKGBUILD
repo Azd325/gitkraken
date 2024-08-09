@@ -7,6 +7,7 @@
 # Contributor: William Penton <william@penton.us>
 # Contributor: Jeff Moody <jeff@fifthecho.com>
 # Contributor: KokaKiwi <kokakiwi+aur@kokakiwi.net>
+# Contributor: iBernd81 <aur at gempel dot bayern>
 
 pkgname=gitkraken
 pkgrel=1
