@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get new version info
-VER=$(curl -s https://www.gitkraken.com/download | grep "Latest release:" | awk 'match($0,">Latest release: *(.*)</span>",a){print a[1]}')
+VER=$(curl -s https://www.gitkraken.com/download | grep "Latest release:" | awk 'match($0,">Latest release: *(.*)</",a){print a[1]}')
 
 pushd gitkraken-aur || exit
 
