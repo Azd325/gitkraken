@@ -1,7 +1,7 @@
 pkgbase = gitkraken
 	pkgdesc = The intuitive, fast, and beautiful cross-platform Git client.
 	pkgver = 11.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gitkraken.com/
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = gitkraken
 	provides = gitkraken
 	options = !strip
 	options = !debug
-	source = gitkraken-11.1.0.tar.gz::https://release.axocdn.com/linux/GitKraken-v11.1.0.tar.gz
+	source = gitkraken-11.1.0.tar.gz::https://api.gitkraken.dev/releases/production/linux/x64/11.1.0/gitkraken-amd64.tar.gz
 	source = GitKraken.desktop
 	source = eula.html
 	source = gitkraken.sh
