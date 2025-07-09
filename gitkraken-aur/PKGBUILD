@@ -4,13 +4,13 @@
 # Contributor: Samuel Littley <samuel@samuellittley.me>
 # Contributor: KillWolfVlad <github.com/KillWolfVlad>
 # Contributor: Victor Hugo Souza <vhbsouza@gmail.com>
-# Contributor: William Penton <william@penton.us>
+# Contributor: William Penton <william@nexxuz.co>
 # Contributor: Jeff Moody <jeff@fifthecho.com>
 # Contributor: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 # Contributor: iBernd81 <aur at gempel dot bayern>
 
 pkgname=gitkraken
-pkgrel=1
+pkgrel=2
 pkgver=11.2.1
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="https://www.gitkraken.com/"
