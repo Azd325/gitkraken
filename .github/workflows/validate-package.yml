@@ -34,6 +34,11 @@ jobs:
   linter:
     name: Code Base
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+      # To report GitHub Actions status checks
+      statuses: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -41,7 +46,7 @@ jobs:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
       - name: Lint Code Base
-        uses: github/super-linter/slim@v7
+        uses: super-linter/super-linter/slim@v8.0.0
         env:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_HTML: false
