@@ -20,7 +20,7 @@ jobs:
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
-        uses: Azd325/arch-pkgbuild-builder@master
+        uses: Azd325/arch-pkgbuild-builder@1df308b1218f91dd79a496b7dae1383b3bcb2d14
         with:
           target: "pkgbuild"
           builddir: "gitkraken-aur"
@@ -28,7 +28,7 @@ jobs:
 
       - name: Validate SRCINFO
         id: validate-srcinfo
-        uses: Azd325/arch-pkgbuild-builder@master
+        uses: Azd325/arch-pkgbuild-builder@1df308b1218f91dd79a496b7dae1383b3bcb2d14
         with:
           target: "srcinfo"
           builddir: "gitkraken-aur"
@@ -49,7 +49,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Lint Code Base
-        uses: super-linter/super-linter/slim@v8.1.0
+        uses: super-linter/super-linter/slim@ffde3b2b33b745cb612d787f669ef9442b1339a6
         env:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_HTML: false
