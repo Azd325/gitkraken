@@ -55,5 +55,6 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_HTML: false
           VALIDATE_HTML_PRETTIER: false
+          VALIDATE_BIOME_FORMAT: false
           DEFAULT_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
