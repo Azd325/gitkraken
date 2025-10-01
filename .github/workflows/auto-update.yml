@@ -1,0 +1,89 @@
+name: Automated Update
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-update:
+    name: Bump GitKraken Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Capture current version
+        id: current
+        run: |
+          prev=$(grep '^pkgver=' gitkraken-aur/PKGBUILD | cut -d= -f2)
+          pkgrel=$(grep '^pkgrel=' gitkraken-aur/PKGBUILD | cut -d= -f2)
+          {
+            echo "previous=$prev"
+            echo "previous_pkgrel=$pkgrel"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Build update container
+        run: docker build --platform=linux/amd64 -t gitkraken-update .
+
+      - name: Run update script in container
+        run: docker run --platform=linux/amd64 --rm -v "${{ github.workspace }}":/work -w /work gitkraken-update ./update.sh
+
+      - name: Run namcap in container
+        run: docker run --platform=linux/amd64 --rm -v "${{ github.workspace }}":/work -w /work gitkraken-update bash -lc 'if [ -f gitkraken-aur/.SRCINFO ]; then namcap gitkraken-aur/PKGBUILD gitkraken-aur/.SRCINFO; else namcap gitkraken-aur/PKGBUILD; fi'
+
+      - name: Capture updated version
+        id: updated
+        run: |
+          new=$(grep '^pkgver=' gitkraken-aur/PKGBUILD | cut -d= -f2)
+          pkgrel=$(grep '^pkgrel=' gitkraken-aur/PKGBUILD | cut -d= -f2)
+          {
+            echo "new=$new"
+            echo "pkgrel=$pkgrel"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Export version metadata
+        env:
+          PREVIOUS_VERSION: ${{ steps.current.outputs.previous }}
+          PREVIOUS_PKGREL: ${{ steps.current.outputs.previous_pkgrel }}
+          NEW_VERSION: ${{ steps.updated.outputs.new }}
+          NEW_PKGREL: ${{ steps.updated.outputs.pkgrel }}
+        run: |
+          {
+            echo "PREVIOUS_VERSION=$PREVIOUS_VERSION"
+            echo "PREVIOUS_PKGREL=$PREVIOUS_PKGREL"
+            echo "NEW_VERSION=$NEW_VERSION"
+            echo "NEW_PKGREL=$NEW_PKGREL"
+          } >> "$GITHUB_ENV"
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            git status --short
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create pull request
+        if: steps.diff.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
+        with:
+          commit-message: "gitkraken: ${{ env.PREVIOUS_VERSION }} -> ${{ env.NEW_VERSION }}"
+          title: "gitkraken: ${{ env.PREVIOUS_VERSION }} -> ${{ env.NEW_VERSION }}"
+          branch: chore/gitkraken-auto-update
+          body: |
+            Automated update triggered by scheduled workflow.
+
+            - Ran `./update.sh` inside `archlinux:base-devel`
+            - `namcap` output captured in workflow logs
+
+            If additional changes are required, push to this branch and re-run checks.
