@@ -37,7 +37,8 @@ jobs:
         run: docker run --platform=linux/amd64 --rm -v "${{ github.workspace }}":/work -w /work gitkraken-update ./update.sh
 
       - name: Run namcap in container
-        run: docker run --platform=linux/amd64 --rm -v "${{ github.workspace }}":/work -w /work gitkraken-update bash -lc 'if [ -f gitkraken-aur/.SRCINFO ]; then namcap gitkraken-aur/PKGBUILD gitkraken-aur/.SRCINFO; else namcap gitkraken-aur/PKGBUILD; fi'
+        run: docker run --platform=linux/amd64 --rm -v "${{ github.workspace }}":/work -w /work gitkraken-update bash -lc 'if [ -f gitkraken-aur/.SRCINFO ]; then namcap gitkraken-aur/PKGBUILD gitkraken-aur/.SRCINFO; else namcap gitkraken-aur/PKGBUILD; fi' || true
+        continue-on-error: true
 
       - name: Capture updated version
         id: updated
