@@ -9,17 +9,25 @@ on:
   schedule:
     - cron: "27 6 * * *"
 
-permissions: read-all
+permissions:
+  actions: read
+  contents: read # only for delete-branch option
+  issues: read
+  pull-requests: read
 
 jobs:
   stale:
+    name: Mark stale issues and pull requests
     runs-on: ubuntu-latest
     permissions:
+      actions: write
+      contents: write # only for delete-branch option
       issues: write
       pull-requests: write
 
     steps:
-      - uses: actions/stale@v10.2.0
+      - name: "Running stale issues and pull requests"
+        uses: actions/stale@b5d41d4e1d5dceea10e7104786b73624c18a190f
         with:
           stale-issue-message: >
             :warning: **This issue was automatically marked stale because it was
