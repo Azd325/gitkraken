@@ -10,7 +10,7 @@
 # Contributor: iBernd81 <aur at gempel dot bayern>
 
 pkgname=gitkraken
-pkgrel=1
+pkgrel=2
 pkgver=12.2.0
 pkgdesc="The intuitive, fast, and beautiful cross-platform Git client."
 url="https://www.gitkraken.com/"
