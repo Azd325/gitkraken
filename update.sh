@@ -97,6 +97,18 @@ fi
 echo "Refreshing checksums"
 updpkgsums
 
+# updpkgsums only regenerates checksums for the build host's architecture, so the
+# aarch64 tarball is never hashed on the x86_64 update runner. Compute it directly
+# (just hashing a download, no emulation needed) and splice it into the PKGBUILD.
+echo "Refreshing aarch64 checksum"
+arm64_tarball_url="https://api.gitkraken.dev/releases/production/linux/arm64/${latest_version}/gitkraken-aarch64.tar.gz"
+arm64_sum=$(curl -fsSL "$arm64_tarball_url" | sha256sum | cut -d' ' -f1)
+if [[ -z "${arm64_sum}" || ${#arm64_sum} -ne 64 ]]; then
+	echo "Failed to compute aarch64 checksum" >&2
+	exit 1
+fi
+sed -i "s|^sha256sums_aarch64=.*|sha256sums_aarch64=('${arm64_sum}')|" PKGBUILD
+
 echo "Removing previous build artifacts"
 rm -rf pkg/ src/ ./*.pkg.tar.zst ./*.tar.gz
 

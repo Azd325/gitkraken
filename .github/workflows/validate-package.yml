@@ -35,6 +35,48 @@ jobs:
           target: "srcinfo"
           builddir: "gitkraken-aur"
           pkgname: "gitkraken"
+  sources:
+    name: Verify ${{ matrix.arch }} source
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x86_64, aarch64]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+
+      - name: Verify source URL, checksum, and layout
+        run: |
+          set -euo pipefail
+          cd gitkraken-aur
+          # shellcheck disable=SC1091
+          source PKGBUILD
+          arch="${{ matrix.arch }}"
+          declare -n src="source_${arch}"
+          declare -n sums="sha256sums_${arch}"
+          url="${src[0]#*::}"
+          expected="${sums[0]}"
+          echo "Arch:     ${arch}"
+          echo "URL:      ${url}"
+          echo "Expected: ${expected}"
+          curl -fsSL "${url}" -o pkg.tar.gz
+          actual="$(sha256sum pkg.tar.gz | cut -d' ' -f1)"
+          echo "Actual:   ${actual}"
+          if [[ "${actual}" != "${expected}" ]]; then
+            echo "::error::Checksum mismatch for ${arch} (${actual} != ${expected})"
+            exit 1
+          fi
+          contents="$(tar tzf pkg.tar.gz)"
+          for entry in gitkraken/gitkraken gitkraken/gitkraken.png; do
+            if ! grep -qx "${entry}" <<<"${contents}"; then
+              echo "::error::Expected ${entry} missing from ${arch} tarball"
+              exit 1
+            fi
+          done
+          echo "OK: ${arch} source verified"
   linter:
     name: Code Base
     runs-on: ubuntu-latest
