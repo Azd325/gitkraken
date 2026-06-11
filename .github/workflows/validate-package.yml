@@ -22,19 +22,17 @@ jobs:
 
       - name: Validate PKGBUILD
         id: validate-pkgbuild
-        uses: Azd325/arch-pkgbuild-builder@1df308b1218f91dd79a496b7dae1383b3bcb2d14
+        uses: 2m/arch-pkgbuild-builder@1e857b7a8cd3e37b29898833363bab7e621cdd7b # v1.21
         with:
           target: "pkgbuild"
-          builddir: "gitkraken-aur"
-          pkgname: "gitkraken"
+          pkgname: "gitkraken-aur"
 
       - name: Validate SRCINFO
         id: validate-srcinfo
-        uses: Azd325/arch-pkgbuild-builder@1df308b1218f91dd79a496b7dae1383b3bcb2d14
+        uses: 2m/arch-pkgbuild-builder@1e857b7a8cd3e37b29898833363bab7e621cdd7b # v1.21
         with:
           target: "srcinfo"
-          builddir: "gitkraken-aur"
-          pkgname: "gitkraken"
+          pkgname: "gitkraken-aur"
   sources:
     name: Verify ${{ matrix.arch }} source
     runs-on: ubuntu-latest
