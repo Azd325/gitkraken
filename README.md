@@ -18,6 +18,8 @@ You can also submit [feature requests](https://feedback.gitkraken.com/) and see 
 
 - Change to the [gitkraken-aur](gitkraken-aur) folder
 - Update package version in [PKGBUILD](gitkraken-aur/PKGBUILD)
-- Update checksums with `updpkgsums`
+- Update checksums with `updpkgsums` (this only refreshes the build host's
+  architecture; `updpkgsums` leaves `sha256sums_aarch64` untouched on an
+  `x86_64` host — `./update.sh` hashes the aarch64 tarball directly to cover it)
 - Do a test installation with `makepkg --syncdeps --install` [Docs for makepkg](https://wiki.archlinux.org/title/makepkg)
 - Update [.SRCINFO](gitkraken-aur/.SRCINFO) with `makepkg --printsrcinfo > .SRCINFO` [Docs for makepkg](https://wiki.archlinux.org/title/makepkg)
