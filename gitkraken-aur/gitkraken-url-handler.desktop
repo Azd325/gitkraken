@@ -3,7 +3,7 @@ Name=GitKraken
 Comment=Unleash your repo
 GenericName=Git Client
 Exec=/usr/bin/gitkraken --uri=%U
-Icon=/usr/share/pixmaps/gitkraken.png
+Icon=gitkraken
 Type=Application
 NoDisplay=true
 StartupNotify=true
