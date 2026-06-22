@@ -32,9 +32,9 @@ source=(
 )
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://api.gitkraken.dev/releases/production/linux/x64/${pkgver}/gitkraken-amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://api.gitkraken.dev/releases/production/linux/arm64/${pkgver}/gitkraken-aarch64.tar.gz")
-sha256sums=('17f8af55ea43dcbe7840f35ed4192be7f13fb6a6c9cd3ef15f686c03bb072aec'
-            '3d42f9ef0ef05d8d145f2dddecb32db5c5d56f13b8233d5f761f85f92bdd1a4f'
-            'ad4cc27cc6bbb825765eb0c2c2991de14961ac02ff5859799f28cd179d17ada8'
+sha256sums=('af2d2e5a44ec6e543c34f94cfb89fe34b6c05d2baf6ca9db5b6d332e4a5686e5'
+            '4342596839114228740e5d61cdc49fbe9e98d05d1aabe2694ffe9d48ffd4082e'
+            '4b3eaf932b79e8f1d6a6a6efd030e73cb544d3d0fbe6bf7b61b884f4c6042b0a'
             '5b7b39b331bc32a606e1e79c695df4519c9b220225be00fb34ef368c3af319a6')
 sha256sums_x86_64=('939aa5dbffde7e76e8bff922f2b5febdcf01cc037e7770400c49e2523d8f132f')
 sha256sums_aarch64=('48c142f9ca2a75a121e881b99fedc08482774d70b27efa09c121128fe325660d')
