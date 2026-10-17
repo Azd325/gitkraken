@@ -13,9 +13,9 @@ push:
 	git subtree push -P gitkraken-aur "aur@aur.archlinux.org:gitkraken.git" master
 
 update-container:
-	docker build --platform=$(DOCKER_PLATFORM) -t $(DOCKER_IMAGE) .
+	docker build --platform=$(DOCKER_PLATFORM) --build-arg UID=$(shell id -u) -t $(DOCKER_IMAGE) .
 	$(DOCKER_RUN) ./update.sh
 
 update-container-pkgrel:
-	docker build --platform=$(DOCKER_PLATFORM) -t $(DOCKER_IMAGE) .
+	docker build --platform=$(DOCKER_PLATFORM) --build-arg UID=$(shell id -u) -t $(DOCKER_IMAGE) .
 	$(DOCKER_RUN) ./update.sh -p
