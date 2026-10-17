@@ -91,7 +91,6 @@ else
 	echo "Updating PKGBUILD from ${current_version} to ${latest_version}"
 	update_field pkgver "$latest_version"
 	update_field pkgrel 1
-	export PREVIOUS_VERSION="$current_version"
 fi
 
 echo "Refreshing checksums"
@@ -118,10 +117,8 @@ makepkg --syncdeps --cleanbuild --noconfirm
 echo "Regenerating .SRCINFO"
 makepkg --printsrcinfo >.SRCINFO
 
-if [[ -n "${GITHUB_ENV:-}" ]]; then
-	printf 'NEW_VERSION=%s\n' "$latest_version" >>"$GITHUB_ENV"
-	printf 'PREVIOUS_VERSION=%s\n' "${PREVIOUS_VERSION:-$current_version}" >>"$GITHUB_ENV"
-fi
+echo "Running namcap (non-blocking)"
+namcap PKGBUILD ./*.pkg.tar.zst || echo "namcap exited with status $?; continuing" >&2
 
 echo "Cleaning up build artifacts"
 rm -rf pkg/ src/ ./*.pkg.tar.zst ./*.tar.gz

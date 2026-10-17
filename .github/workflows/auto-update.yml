@@ -31,14 +31,10 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Build update container
-        run: docker build --platform=linux/amd64 -t gitkraken-update .
+        run: docker build --platform=linux/amd64 --build-arg UID="$(id -u)" -t gitkraken-update .
 
       - name: Run update script in container
         run: docker run --platform=linux/amd64 --rm -v "${{ github.workspace }}":/work -w /work gitkraken-update ./update.sh
-
-      - name: Run namcap in container
-        run: docker run --platform=linux/amd64 --rm -v "${{ github.workspace }}":/work -w /work gitkraken-update bash -lc 'if [ -f gitkraken-aur/.SRCINFO ]; then namcap gitkraken-aur/PKGBUILD gitkraken-aur/.SRCINFO; else namcap gitkraken-aur/PKGBUILD; fi' || true
-        continue-on-error: true
 
       - name: Capture updated version
         id: updated
@@ -85,6 +81,6 @@ jobs:
             Automated update triggered by scheduled workflow.
 
             - Ran `./update.sh` inside `archlinux:base-devel`
-            - `namcap` output captured in workflow logs
+            - `namcap` ran on the built package; its output is in the workflow log
 
             If additional changes are required, push to this branch and re-run checks.
