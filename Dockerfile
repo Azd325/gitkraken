@@ -14,7 +14,7 @@ RUN useradd -l -m -u "${UID}" builder \
     && echo 'builder ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers \
     && install -d -o builder -g builder /work
 
-USER builder
+USER ${UID}
 WORKDIR /work
 
 HEALTHCHECK NONE
